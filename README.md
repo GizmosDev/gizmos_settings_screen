@@ -44,12 +44,11 @@ Check the included example app for full details. For basic usage, you need to in
 ### Example
 
 ```dart
+    // Select the default skin to use
+    SettingsSkinDelegate skinDelegate = !Platform.isIOS ? MaterialSettingsSkin() : CupertinoSettingsSkin();
 
-	// Select the default skin to use
-	SettingsSkinDelegate skinDelegate = !Platform.isIOS ? MaterialSettingsSkin() : CupertinoSettingsSkin();
-
-	// Return the configured SettingsScreen wrapped in a SettingsSkin with an assigned delegate
-	return SettingsSkin(
+    // Return the configured SettingsScreen wrapped in a SettingsSkin with an assigned delegate
+    return SettingsSkin(
       delegate: skinDelegate,
       child: SettingsScreen(
         sections: [
@@ -110,7 +109,6 @@ Check the included example app for full details. For basic usage, you need to in
         ],
       ),
     );
-
 ```
 
 Please see the example app in this package for a full example.
