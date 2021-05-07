@@ -40,7 +40,7 @@ class _OptionViewState extends State<OptionView> {
         onPressed: () async {
           await prefs.setString('sampleDogType', dogType.id);
           setState(() {});
-          await Navigator.of(context).pop();
+          Navigator.of(context).pop();
         },
       );
 

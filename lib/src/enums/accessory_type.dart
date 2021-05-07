@@ -38,6 +38,5 @@ extension AccessoryTypeAdditions on AccessoryType {
       case AccessoryType.Custom:
         return 'Custom';
     }
-    return 'Invalid';
   }
 }

@@ -118,7 +118,6 @@ abstract class SettingsSkinDelegate {
   /// This generates the frame of a settings cell, with the contents supplied by the [child] parameter
   /// - [context] the current BuildContext
   /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
-  /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   /// - [child] the rendered contents of the cell, possibly generated via one of the ...Content() methods below
   Widget settingsCell(BuildContext context, {Key key, Set<MaterialState> materialStates, Map<String, dynamic> extraInfo, Widget child});

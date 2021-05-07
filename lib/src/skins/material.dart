@@ -517,16 +517,17 @@ class MaterialSettingsSkin extends DefaultSkin {
   }
 
   @override
-  Widget wrappedLeadingWidget(BuildContext context, {Set<MaterialState> materialStates, Map<String, dynamic> extraInfo, @required Widget child}) {
+  Widget wrappedLeadingWidget(BuildContext context, {Key key, Set<MaterialState> materialStates, Map<String, dynamic> extraInfo, @required Widget child}) {
     child ??= SizedBox(width: leadingIndent(context), height: leadingIndent(context));
-    return Center(child: Container(color: Colors.transparent, width: leadingIndent(context), height: leadingIndent(context), alignment: Alignment.center, child: child));
+    return Center(key: key, child: Container(color: Colors.transparent, width: leadingIndent(context), height: leadingIndent(context), alignment: Alignment.center, child: child));
   }
 
   // Widget Generators
   /// Section Header
   @override
-  Widget sectionHeader(BuildContext context, String title, {Map<String, dynamic> extraInfo}) {
+  Widget sectionHeader(BuildContext context, String title, {Key key, Map<String, dynamic> extraInfo}) {
     return Container(
+      key: key,
       height: headerHeight(context),
       color: headerBackgroundColor(context),
       child: ((title?.length ?? 0) < 1)
@@ -560,7 +561,7 @@ class MaterialSettingsSkin extends DefaultSkin {
 
   /// Section Footer
   @override
-  Widget sectionFooter(BuildContext context, String footer, {Map<String, dynamic> extraInfo}) {
+  Widget sectionFooter(BuildContext context, String footer, {Key key, Map<String, dynamic> extraInfo}) {
     if ((footer?.length ?? 0) < 1) return null;
 
     return Container(
@@ -613,7 +614,7 @@ class MaterialSettingsSkin extends DefaultSkin {
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
   Widget settingsCellBottom(BuildContext context, {Key key, Set<MaterialState> materialStates, @required int cellIndex, @required int cellCount, Map<String, dynamic> extraInfo}) {
-    return (cellIndex < (cellCount - 1)) ? null : keyline(context, extraInfo: extraInfo);
+    return (cellIndex < (cellCount - 1)) ? null : keyline(context, key: key, extraInfo: extraInfo);
   }
 
   /// Setting Cell
@@ -656,6 +657,7 @@ class MaterialSettingsSkin extends DefaultSkin {
     var combinedValueAndSubtitle = parts.join('/');
 
     return Container(
+      key: key,
       color: Colors.transparent,
       height: rowHeight(context, extraInfo: extraInfo),
       child: Row(
@@ -664,8 +666,7 @@ class MaterialSettingsSkin extends DefaultSkin {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           leadingCellPadding(context, extraInfo: extraInfo),
-          wrappedLeadingWidget(context, child: leadingWidget, extraInfo: extraInfo),
-          horizontalPadding(context, extraInfo: extraInfo),
+          wrappedLeadingWidget(context, extraInfo: extraInfo, child: leadingWidget),
           Expanded(
             child: Align(
               alignment: AlignmentDirectional.centerStart,
@@ -705,6 +706,7 @@ class MaterialSettingsSkin extends DefaultSkin {
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo);
 
     return Container(
+      key: key,
       color: Colors.transparent,
       height: rowHeight(context, extraInfo: extraInfo),
       child: Row(
@@ -713,8 +715,7 @@ class MaterialSettingsSkin extends DefaultSkin {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           leadingCellPadding(context, extraInfo: extraInfo),
-          wrappedLeadingWidget(context, child: leadingWidget, extraInfo: extraInfo),
-          horizontalPadding(context, extraInfo: extraInfo),
+          wrappedLeadingWidget(context, extraInfo: extraInfo, child: leadingWidget),
           Expanded(
             child: Align(
               alignment: AlignmentDirectional.centerStart,
@@ -770,6 +771,7 @@ class MaterialSettingsSkin extends DefaultSkin {
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo);
 
     return Container(
+      key: key,
       color: Colors.transparent,
       height: rowHeight(context, extraInfo: extraInfo),
       child: Row(
@@ -778,8 +780,7 @@ class MaterialSettingsSkin extends DefaultSkin {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           leadingCellPadding(context, extraInfo: extraInfo),
-          wrappedLeadingWidget(context, child: leadingWidget, extraInfo: extraInfo),
-          horizontalPadding(context, extraInfo: extraInfo),
+          wrappedLeadingWidget(context, extraInfo: extraInfo, child: leadingWidget),
           Expanded(
             child: Align(
               alignment: AlignmentDirectional.centerStart,
@@ -876,6 +877,7 @@ class MaterialSettingsSkin extends DefaultSkin {
     }
 
     return Container(
+      key: key,
       color: Colors.transparent,
       height: rowHeight(context, extraInfo: extraInfo),
       child: Row(
@@ -884,8 +886,7 @@ class MaterialSettingsSkin extends DefaultSkin {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           leadingCellPadding(context, extraInfo: extraInfo),
-          wrappedLeadingWidget(context, child: leadingWidget, extraInfo: extraInfo),
-          horizontalPadding(context, extraInfo: extraInfo),
+          wrappedLeadingWidget(context, extraInfo: extraInfo, child: leadingWidget),
           Expanded(
             child: Align(
               alignment: AlignmentDirectional.centerStart,

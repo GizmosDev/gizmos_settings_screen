@@ -32,8 +32,7 @@ class SwitchSettingsCell extends SettingsCell {
   // Constructor
   /// Switch Settings Cell
   /// This generates a toggle/switch cell with an optional icon/image, title, subtitle, value (used to set the initial value of the switch) and accessory
-  /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [initialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [title] main text description
   /// - [subtitle] secondary text description
   /// - [value] current value for this setting/cell

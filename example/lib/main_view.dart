@@ -38,7 +38,7 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   // Helper Methods
-  void showSimpleAlert(String title, String message) async {
+  Future<void> showSimpleAlert(String title, String message) async {
     return showDialog<void>(
       context: context,
       barrierDismissible: true,
@@ -54,10 +54,10 @@ class _MainViewState extends State<MainView> {
           ),
           actions: [
             TextButton(
-              child: Text('Ok', textAlign: TextAlign.end),
               onPressed: () {
                 Navigator.of(context).pop();
               },
+              child: Text('Ok', textAlign: TextAlign.end),
             ),
           ],
         );
@@ -148,11 +148,11 @@ class _MainViewState extends State<MainView> {
                 subtitle: 'Watch the star on the left',
                 value: prefs.getDouble('sampleDoubleSetting') ?? defaultDoubleSetting,
                 leadingWidget: Opacity(
+                  opacity: prefs.getDouble('sampleDoubleSetting') ?? defaultDoubleSetting,
                   child: Icon(
                     Icons.star,
                     color: Colors.blue,
                   ),
-                  opacity: prefs.getDouble('sampleDoubleSetting') ?? defaultDoubleSetting,
                 ),
                 onChanged: (value) async {
                   await prefs.setDouble('sampleDoubleSetting', value);

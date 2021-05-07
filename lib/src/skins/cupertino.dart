@@ -275,6 +275,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
     );
 
     return Row(
+      key: key,
       mainAxisAlignment: MainAxisAlignment.end,
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -319,11 +320,18 @@ class CupertinoSettingsSkin extends DefaultSkin {
     return accessoryWidget;
   }
 
+  @override
+  Widget wrappedLeadingWidget(BuildContext context, {Key key, Set<MaterialState> materialStates, Map<String, dynamic> extraInfo, Widget child}) {
+    child ??= SizedBox.shrink();
+    return Center(key: key, child: Container(color: Colors.transparent, alignment: Alignment.center, child: child));
+  }
+
   // Widget Generators
   /// Section Header
   @override
-  Widget sectionHeader(BuildContext context, String title, {Map<String, dynamic> extraInfo}) {
+  Widget sectionHeader(BuildContext context, String title, {Key key, Map<String, dynamic> extraInfo}) {
     return Container(
+      key: key,
       height: headerHeight(context),
       color: headerBackgroundColor(context),
       child: ((title?.length ?? 0) < 1)
@@ -356,10 +364,11 @@ class CupertinoSettingsSkin extends DefaultSkin {
 
   /// Section Footer
   @override
-  Widget sectionFooter(BuildContext context, String footer, {Map<String, dynamic> extraInfo}) {
+  Widget sectionFooter(BuildContext context, String footer, {Key key, Map<String, dynamic> extraInfo}) {
     if ((footer?.length ?? 0) < 1) return null;
 
     return Container(
+      key: key,
       height: footerHeight(context),
       color: footerBackgroundColor(context),
       child: Row(
@@ -398,6 +407,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
   @override
   Widget settingsCellTop(BuildContext context, {Key key, Set<MaterialState> materialStates, @required int cellIndex, @required int cellCount, Map<String, dynamic> extraInfo}) {
     return cellIndex == 0 ? keyline(context, extraInfo: extraInfo) : null;
+    return cellIndex == 0 ? keyline(context, key: key, extraInfo: extraInfo) : null;
   }
 
   /// Settings Cell Bottom
@@ -410,6 +420,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
   @override
   Widget settingsCellBottom(BuildContext context, {Key key, Set<MaterialState> materialStates, @required int cellIndex, @required int cellCount, Map<String, dynamic> extraInfo}) {
     return keyline(context, indent: cellIndex < (cellCount - 1) ? 20 : 0, extraInfo: extraInfo);
+    return keyline(context, key: key, indent: cellIndex < (cellCount - 1) ? 20 : 0, extraInfo: extraInfo);
   }
 
   /// Setting Cell
@@ -422,6 +433,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
   @override
   Widget settingsCell(BuildContext context, {Key key, Set<MaterialState> materialStates, Map<String, dynamic> extraInfo, Widget child}) {
     return Container(
+      key: key,
       color: cellBackgroundColor(context, materialStates: materialStates, extraInfo: extraInfo),
       // height: rowHeight(context, extraInfo: extraInfo),
       child: child,
@@ -444,6 +456,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
     value ??= '';
 
     return Container(
+      key: key,
       color: Colors.transparent,
       height: rowHeight(context, extraInfo: extraInfo),
       child: Row(
@@ -452,7 +465,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           leadingCellPadding(context, extraInfo: extraInfo),
-          if (leadingWidget != null) leadingWidget,
+          if (leadingWidget != null) wrappedLeadingWidget(context, extraInfo: extraInfo, child: leadingWidget),
           if (leadingWidget != null) horizontalPadding(context, extraInfo: extraInfo),
           Flexible(
             flex: 1,
@@ -504,6 +517,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo);
 
     return Container(
+      key: key,
       color: Colors.transparent,
       height: rowHeight(context, extraInfo: extraInfo),
       child: Row(
@@ -512,7 +526,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           leadingCellPadding(context, extraInfo: extraInfo),
-          if (leadingWidget != null) leadingWidget,
+          if (leadingWidget != null) wrappedLeadingWidget(context, extraInfo: extraInfo, child: leadingWidget),
           if (leadingWidget != null) horizontalPadding(context, extraInfo: extraInfo),
           Expanded(
             child: Align(
@@ -564,6 +578,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo);
 
     return Container(
+      key: key,
       color: Colors.transparent,
       height: rowHeight(context, extraInfo: extraInfo),
       child: Row(
@@ -572,7 +587,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           leadingCellPadding(context, extraInfo: extraInfo),
-          if (leadingWidget != null) leadingWidget,
+          if (leadingWidget != null) wrappedLeadingWidget(context, extraInfo: extraInfo, child: leadingWidget),
           if (leadingWidget != null) horizontalPadding(context, extraInfo: extraInfo),
           Expanded(
             child: Align(
@@ -645,6 +660,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
     }
 
     return Container(
+      key: key,
       color: Colors.transparent,
       height: rowHeight(context, extraInfo: extraInfo),
       child: Row(
@@ -653,7 +669,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           leadingCellPadding(context, extraInfo: extraInfo),
-          if (leadingWidget != null) leadingWidget,
+          if (leadingWidget != null) wrappedLeadingWidget(context, extraInfo: extraInfo, child: leadingWidget),
           if (leadingWidget != null) horizontalPadding(context, extraInfo: extraInfo),
           Expanded(
             child: Align(

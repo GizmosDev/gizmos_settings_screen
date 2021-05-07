@@ -38,6 +38,5 @@ extension ButtonTypeAdditions on ButtonType {
       case ButtonType.Custom:
         return 'Custom';
     }
-    return 'Invalid';
   }
 }
