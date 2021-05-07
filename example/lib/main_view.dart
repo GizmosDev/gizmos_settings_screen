@@ -18,7 +18,7 @@ class MainView extends StatefulWidget {
   final String title;
 
   // Constructor
-  MainView({Key key, this.title}) : super(key: key);
+  MainView({Key? key, required this.title}) : super(key: key);
 
   // State
   @override

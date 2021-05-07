@@ -21,10 +21,10 @@ import './skins/default.dart';
 /// It handles adding any required widgets around each of the elements and renders them appropriately
 class SettingsSection extends StatelessWidget {
   // Fields
-  final String header;
-  final Map<String, dynamic> headerInfo;
-  final String footer;
-  final Map<String, dynamic> footerInfo;
+  final String? header;
+  final Map<String, dynamic>? headerInfo;
+  final String? footer;
+  final Map<String, dynamic>? footerInfo;
   final List<SettingsCell> cells;
 
   // Constructor
@@ -35,7 +35,7 @@ class SettingsSection extends StatelessWidget {
   /// - [footer] text to appear in the footer of this section
   /// - [footerInfo] [extraInfo] for the footer where you can pass additional info through to your subclasses to be used however you need
   /// - [cells] list of [SettingsCell] subclasses that will make up this section
-  SettingsSection({Key key, this.header, this.headerInfo, this.footer, this.footerInfo, @required this.cells}) : super(key: key);
+  SettingsSection({Key? key, this.header, this.headerInfo, this.footer, this.footerInfo, required this.cells}) : super(key: key);
 
   // Build
   @override
@@ -43,28 +43,15 @@ class SettingsSection extends StatelessWidget {
     var skinDelegate = SettingsSkin.of(context)?.delegate ?? DefaultSkin();
     var children = <Widget>[];
 
-    var sectionHeader = skinDelegate.sectionHeader(context, header, extraInfo: headerInfo);
-    if (sectionHeader != null) {
-      children.add(sectionHeader);
-    }
+    children.add(skinDelegate.sectionHeader(context, header: header, extraInfo: headerInfo));
 
     for (var index = 0; index < cells.length; ++index) {
-      var topper = skinDelegate.settingsCellTop(context, cellIndex: index, cellCount: cells.length, extraInfo: cells[index].extraInfo);
-      if (topper != null) {
-        children.add(topper);
-      }
+      children.add(skinDelegate.settingsCellTop(context, cellIndex: index, cellCount: cells.length, extraInfo: cells[index].extraInfo));
       children.add(cells[index]);
-
-      var bottom = skinDelegate.settingsCellBottom(context, cellIndex: index, cellCount: cells.length, extraInfo: cells[index].extraInfo);
-      if (bottom != null) {
-        children.add(bottom);
-      }
+      children.add(skinDelegate.settingsCellBottom(context, cellIndex: index, cellCount: cells.length, extraInfo: cells[index].extraInfo));
     }
 
-    var sectionFooter = skinDelegate.sectionFooter(context, footer, extraInfo: footerInfo);
-    if (sectionFooter != null) {
-      children.add(sectionFooter);
-    }
+    children.add(skinDelegate.sectionFooter(context, footer: footer, extraInfo: footerInfo));
 
     return IntrinsicHeight(
       child: Container(

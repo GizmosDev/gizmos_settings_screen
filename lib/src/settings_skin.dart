@@ -21,7 +21,7 @@ import './settings_section.dart';
 /// All rendering will be handled by the [SettingsSkinDelegate] set by your application
 class SettingsSkin extends InheritedWidget {
   // Static Methods
-  static SettingsSkin of(BuildContext context) {
+  static SettingsSkin? of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<SettingsSkin>();
   }
 
@@ -29,7 +29,7 @@ class SettingsSkin extends InheritedWidget {
   final SettingsSkinDelegate delegate;
 
   // Constructor
-  SettingsSkin({Key key, @required this.delegate, @required Widget child}) : super(key: key, child: child);
+  SettingsSkin({Key? key, required this.delegate, required Widget child}) : super(key: key, child: child);
 
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) {
@@ -48,7 +48,7 @@ abstract class SettingsSkinDelegate {
   // Customization Methods
   // - Colours
   // - - basic
-  Color primaryColor({Set<MaterialState> materialStates});
+  Color primaryColor({Set<MaterialState>? materialStates});
 
   // - - backgrounds
   Color appHeaderBackgroundColor(BuildContext context);
@@ -57,39 +57,39 @@ abstract class SettingsSkinDelegate {
 
   Color listBackgroundColor(BuildContext context);
 
-  Color headerBackgroundColor(BuildContext context, {Map<String, dynamic> extraInfo});
+  Color headerBackgroundColor(BuildContext context, {Map<String, dynamic>? extraInfo});
 
-  Color footerBackgroundColor(BuildContext context, {Map<String, dynamic> extraInfo});
+  Color footerBackgroundColor(BuildContext context, {Map<String, dynamic>? extraInfo});
 
-  Color cellBackgroundColor(BuildContext context, {Set<MaterialState> materialStates, Map<String, dynamic> extraInfo});
+  Color cellBackgroundColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo});
 
   // Text Styles
   // - app header
   TextStyle appHeaderTextStyle(BuildContext context);
 
   // - header
-  TextStyle headerTextStyle(BuildContext context, {Map<String, dynamic> extraInfo});
+  TextStyle headerTextStyle(BuildContext context, {Map<String, dynamic>? extraInfo});
 
   // - footer
-  TextStyle footerTextStyle(BuildContext context, {Map<String, dynamic> extraInfo});
+  TextStyle footerTextStyle(BuildContext context, {Map<String, dynamic>? extraInfo});
 
   // - title
-  TextStyle titleTextStyle(BuildContext context, {Set<MaterialState> materialStates, Map<String, dynamic> extraInfo});
+  TextStyle titleTextStyle(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo});
 
-  TextStyle subtitleTextStyle(BuildContext context, {Set<MaterialState> materialStates, Map<String, dynamic> extraInfo});
+  TextStyle subtitleTextStyle(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo});
 
   // - value
-  TextStyle valueTextStyle(BuildContext context, {Set<MaterialState> materialStates, Map<String, dynamic> extraInfo});
+  TextStyle valueTextStyle(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo});
 
   // Options
   ScrollPhysics defaultScrollPhysics(BuildContext context);
 
   // Widget Generators
   /// Section Header
-  Widget sectionHeader(BuildContext context, String title, {Map<String, dynamic> extraInfo});
+  Widget sectionHeader(BuildContext context, {Key? key, String? header, Map<String, dynamic>? extraInfo});
 
   /// Section Footer
-  Widget sectionFooter(BuildContext context, String footer, {Map<String, dynamic> extraInfo});
+  Widget sectionFooter(BuildContext context, {Key? key, String? footer, Map<String, dynamic>? extraInfo});
 
   /// Section
   Widget section(BuildContext context, SettingsSection section);
@@ -103,7 +103,7 @@ abstract class SettingsSkinDelegate {
   /// - [cellIndex] the index number of this cell in its section
   /// - [cellCount] the total number of cells in its section
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  Widget settingsCellTop(BuildContext context, {Key key, Set<MaterialState> materialStates, @required int cellIndex, @required int cellCount, Map<String, dynamic> extraInfo});
+  Widget settingsCellTop(BuildContext context, {Key? key, Set<MaterialState>? materialStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo});
 
   /// Settings Cell Bottom
   /// - a widget to appear below of the settings cell (keyline or something)
@@ -112,7 +112,7 @@ abstract class SettingsSkinDelegate {
   /// - [cellIndex] the index number of this cell in its section
   /// - [cellCount] the total number of cells in its section
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  Widget settingsCellBottom(BuildContext context, {Key key, Set<MaterialState> materialStates, @required int cellIndex, @required int cellCount, Map<String, dynamic> extraInfo});
+  Widget settingsCellBottom(BuildContext context, {Key? key, Set<MaterialState>? materialStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo});
 
   /// Setting Cell
   /// This generates the frame of a settings cell, with the contents supplied by the [child] parameter
@@ -120,7 +120,7 @@ abstract class SettingsSkinDelegate {
   /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   /// - [child] the rendered contents of the cell, possibly generated via one of the ...Content() methods below
-  Widget settingsCell(BuildContext context, {Key key, Set<MaterialState> materialStates, Map<String, dynamic> extraInfo, Widget child});
+  Widget settingsCell(BuildContext context, {Key? key, Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo, required Widget child});
 
   /// Details Content
   /// This generates the internal contents of a standard details cell with an optional icon/image, title, subtitle, value and accessory
@@ -132,7 +132,7 @@ abstract class SettingsSkinDelegate {
   /// - [leadingWidget] an optional leading image/icon
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  Widget detailsContent(BuildContext context, {Key key, Set<MaterialState> materialStates, String title, String subtitle, String value, Widget leadingWidget, AccessoryType accessoryType, Map<String, dynamic> extraInfo});
+  Widget detailsContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, String title = '', String subtitle = '', String value = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo});
 
   /// Switch Content
   /// This generates the internal contents of a toggle/switch cell with an optional icon/image, title, subtitle, value (used to set the initial value of the switch) and accessory
@@ -145,7 +145,7 @@ abstract class SettingsSkinDelegate {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [onChanged] callback method called when the value of the swich changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  Widget switchContent(BuildContext context, {Key key, Set<MaterialState> materialStates, String title, String subtitle, bool value, Widget leadingWidget, AccessoryType accessoryType, @required Function(bool) onChanged, Map<String, dynamic> extraInfo});
+  Widget switchContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, String title = '', String subtitle = '', bool value = false, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(bool) onChanged, Map<String, dynamic>? extraInfo});
 
   /// Slider Content
   /// This generates the internal contents of a slider cell with an optional icon/image, title, subtitle, value (used to set the initial value of the slider) and accessory
@@ -158,7 +158,7 @@ abstract class SettingsSkinDelegate {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [onChanged] callback method called when the value of the slider changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  Widget sliderContent(BuildContext context, {Key key, Set<MaterialState> materialStates, String title, String subtitle, double value, Widget leadingWidget, AccessoryType accessoryType, @required Function(double) onChanged, Map<String, dynamic> extraInfo});
+  Widget sliderContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, String title = '', String subtitle = '', double value = 0.0, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(double) onChanged, Map<String, dynamic>? extraInfo});
 
   /// Button Content
   /// This generates the internal contents of a button cell with an optional icon/image, title, subtitle, and accessory
@@ -171,5 +171,5 @@ abstract class SettingsSkinDelegate {
   /// - [leadingWidget] an optional leading image/icon
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  Widget buttonContent(BuildContext context, {Key key, Set<MaterialState> materialStates, ButtonType type, String title, String subtitle, Widget leadingWidget, AccessoryType accessoryType, Map<String, dynamic> extraInfo});
+  Widget buttonContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, ButtonType type = ButtonType.Normal, String title = '', String subtitle = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo});
 }

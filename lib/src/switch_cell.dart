@@ -25,7 +25,7 @@ class SwitchSettingsCell extends SettingsCell {
   final String title;
   final String subtitle;
   final bool value;
-  final Widget leadingWidget;
+  final Widget? leadingWidget;
   final AccessoryType accessoryType;
   final Function(bool) onChanged;
 
@@ -40,15 +40,13 @@ class SwitchSettingsCell extends SettingsCell {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [onChanged] callback method called when the value of the swich changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  SwitchSettingsCell({Key key, Set<MaterialState> initialStates, this.title, this.subtitle, bool value, this.leadingWidget, AccessoryType accessoryType, VoidCallback onPressed, this.onChanged, Map<String, dynamic> extraInfo})
-      : accessoryType = accessoryType ?? AccessoryType.None,
-        value = value ?? false,
-        super(key: key, initialStates: initialStates, onPressed: onPressed, extraInfo: extraInfo);
+  SwitchSettingsCell({Key? key, Set<MaterialState>? initialStates, this.title = '', this.subtitle = '', this.value = false, this.leadingWidget, this.accessoryType = AccessoryType.None, VoidCallback? onPressed, required this.onChanged, Map<String, dynamic>? extraInfo})
+      : super(key: key, initialStates: initialStates, onPressed: onPressed, extraInfo: extraInfo);
 
   /// buildContents() is called by the parent's state build() method
   /// - treat this like the build() call of a normal [StatelessWidget], but with the additional [materialStates] object that can be used for customization
   @override
-  Widget buildContents(BuildContext context, {Set<MaterialState> materialStates}) {
+  Widget buildContents(BuildContext context, {Set<MaterialState>? materialStates}) {
     materialStates ??= <MaterialState>{};
     var skinDelegate = SettingsSkin.of(context)?.delegate ?? DefaultSkin();
     return skinDelegate.switchContent(context, materialStates: materialStates, title: title, subtitle: subtitle, value: value, leadingWidget: leadingWidget, accessoryType: accessoryType, onChanged: onChanged, extraInfo: extraInfo);

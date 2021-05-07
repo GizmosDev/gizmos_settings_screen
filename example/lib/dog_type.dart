@@ -19,7 +19,7 @@ enum DogType {
 }
 
 extension DogTypeAdditions on DogType {
-  static DogType fromId(String id) {
+  static DogType fromId(String? id) {
     var dogTypes = DogType.values;
     for (var index = 0; index < dogTypes.length; ++index) {
       if (dogTypes[index].id == id) return dogTypes[index];
@@ -48,6 +48,5 @@ extension DogTypeAdditions on DogType {
       case DogType.Other:
         return 'Other';
     }
-    return 'Invalid';
   }
 }

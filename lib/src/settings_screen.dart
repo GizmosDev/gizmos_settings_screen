@@ -24,14 +24,14 @@ class SettingsScreen extends StatelessWidget {
   // Fields
   final List<SettingsSection> sections;
   final bool shrinkWrap;
-  final ScrollPhysics physics;
+  final ScrollPhysics? physics;
 
   // Constructor
   /// The SettingsScreen manages all of the sections added to this screen
   /// - [shrinkWrap] passed through to [ListView] used to render this widget
   /// - [physics] passed through to [ListView] used to render this widget
   /// - [sections] list of [SettingsSection]'s that compose this screen
-  SettingsScreen({Key key, this.shrinkWrap = false, this.physics, @required this.sections}) : super(key: key);
+  SettingsScreen({Key? key, this.shrinkWrap = false, this.physics, required this.sections}) : super(key: key);
 
   // Build
   @override

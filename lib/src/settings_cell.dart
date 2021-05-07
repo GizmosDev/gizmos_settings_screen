@@ -24,8 +24,8 @@ import './skins/default.dart';
 /// the developer and the user)
 abstract class SettingsCell extends StatefulWidget {
   // Fields
-  final VoidCallback onPressed;
-  final Map<String, dynamic> extraInfo;
+  final VoidCallback? onPressed;
+  final Map<String, dynamic>? extraInfo;
   final Set<MaterialState> initialStates;
 
   // Properties
@@ -37,10 +37,14 @@ abstract class SettingsCell extends StatefulWidget {
   /// - [initialStates] any initial material states that should be applied to this cell (disabled/selected etc)
   /// - [onPressed] a callback that will be executed when the cell is pressed
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  SettingsCell({Key key, this.initialStates, this.onPressed, this.extraInfo}) : super(key: key);
+  SettingsCell({Key? key, Set<MaterialState>? initialStates, this.onPressed, this.extraInfo})
+      : initialStates = initialStates ?? <MaterialState>{},
+        super(key: key);
 
   @override
-  SettingsCellState createState() => SettingsCellState(initialStates: initialStates);
+  SettingsCellState createState() {
+    return SettingsCellState(initialStates: initialStates);
+  }
 
   /// buildContents() is called by the parent's state build() method
   /// - treat this like the build() call of a normal [StatelessWidget], but with the additional [materialStates] object that can be used for customization
@@ -77,8 +81,14 @@ class SettingsCellState<T extends SettingsCell> extends State<T> {
   /// Whether or not the widget's [MaterialState]'s include the [isDisabled] state
   bool get isDisabled => _materialStates.isDisabled;
 
+  /// Whether or not the widget has a non-null onPressed field
+  bool get hasAction => widget.onPressed != null;
+
+  /// Shortcut to the widget's onPressed if it exists, returns a noop otherwise
+  VoidCallback get onPressed => widget.onPressed ?? () {};
+
   // Constructor
-  SettingsCellState({Set<MaterialState> initialStates})
+  SettingsCellState({Set<MaterialState>? initialStates})
       : _materialStates = initialStates ?? <MaterialState>{},
         super();
 
@@ -86,20 +96,20 @@ class SettingsCellState<T extends SettingsCell> extends State<T> {
   void initState() {
     super.initState();
     // See note re: ButtonStyleButton
-    // _updateState(MaterialState.disabled, !widget.hasAction);
+    // _updateState(MaterialState.disabled, !hasAction);
   }
 
   @override
   void didUpdateWidget(T oldWidget) {
     super.didUpdateWidget(oldWidget);
     // See note re: ButtonStyleButton
-    //_updateState(MaterialState.disabled, !widget.hasAction);
+    //_updateState(MaterialState.disabled, !hasAction);
 
     // If the button is disabled while a press gesture is currently ongoing,
     // InkWell makes a call to handleHighlightChanged. This causes an exception
     // because it calls setState in the middle of a build. To preempt this, we
     // manually update pressed to false when this situation occurs.
-    if (!widget.hasAction && isPressed) {
+    if (!hasAction && isPressed) {
       _handleHighlightChanged(false);
     }
   }
@@ -111,19 +121,19 @@ class SettingsCellState<T extends SettingsCell> extends State<T> {
     return Expanded(
       child: GestureDetector(
         onTap: () {
-          if (isDisabled || !widget.hasAction) return;
-          widget.onPressed();
+          if (isDisabled || !hasAction) return;
+          onPressed();
         },
         onTapDown: (tapDownDetails) {
-          if (isDisabled || !widget.hasAction) return;
+          if (isDisabled || !hasAction) return;
           _handleHighlightChanged(true);
         },
         onTapUp: (tapUpDetails) {
-          if (isDisabled || !widget.hasAction) return;
+          if (isDisabled || !hasAction) return;
           _handleHighlightChanged(false);
         },
         onTapCancel: () {
-          if (isDisabled || !widget.hasAction) return;
+          if (isDisabled || !hasAction) return;
           _handleHighlightChanged(false);
         },
         child: skinDelegate.settingsCell(context, materialStates: _materialStates, extraInfo: widget.extraInfo, child: widget.buildContents(context, materialStates: _materialStates)),

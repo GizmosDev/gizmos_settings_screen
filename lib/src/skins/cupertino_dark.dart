@@ -27,7 +27,7 @@ class CupertinoDarkSettingsSkin extends CupertinoSettingsSkin {
   // - Colours
   // - - tints
   @override
-  Color primaryColor({Set<MaterialState> materialStates}) {
+  Color primaryColor({Set<MaterialState>? materialStates}) {
     materialStates ??= <MaterialState>{};
     return HexColor.fromHex('#0b84fe').withAlpha(materialStates.isDisabled ? 100 : 255);
   }
@@ -49,17 +49,17 @@ class CupertinoDarkSettingsSkin extends CupertinoSettingsSkin {
   }
 
   @override
-  Color headerBackgroundColor(BuildContext context, {Map<String, dynamic> extraInfo}) {
+  Color headerBackgroundColor(BuildContext context, {Map<String, dynamic>? extraInfo}) {
     return listBackgroundColor(context);
   }
 
   @override
-  Color footerBackgroundColor(BuildContext context, {Map<String, dynamic> extraInfo}) {
+  Color footerBackgroundColor(BuildContext context, {Map<String, dynamic>? extraInfo}) {
     return headerBackgroundColor(context);
   }
 
   @override
-  Color cellBackgroundColor(BuildContext context, {Set<MaterialState> materialStates, Map<String, dynamic> extraInfo}) {
+  Color cellBackgroundColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
     materialStates ??= <MaterialState>{};
 
     if (materialStates.isPressed) {
@@ -69,7 +69,7 @@ class CupertinoDarkSettingsSkin extends CupertinoSettingsSkin {
     } else if (materialStates.isSelected) {
       return primaryColor().withAlpha(100);
     } else if (materialStates.isDisabled) {
-      return Colors.grey[900];
+      return Colors.grey[900] ?? Colors.grey;
     } else {
       // isNormal
       return HexColor.fromHex('#1c1c1e');
@@ -83,17 +83,17 @@ class CupertinoDarkSettingsSkin extends CupertinoSettingsSkin {
   }
 
   @override
-  Color headerTextColor(BuildContext context, {Map<String, dynamic> extraInfo}) {
+  Color headerTextColor(BuildContext context, {Map<String, dynamic>? extraInfo}) {
     return HexColor.fromHex('#86868b');
   }
 
   @override
-  Color footerTextColor(BuildContext context, {Map<String, dynamic> extraInfo}) {
+  Color footerTextColor(BuildContext context, {Map<String, dynamic>? extraInfo}) {
     return headerTextColor(context);
   }
 
   @override
-  Color titleTextColor(BuildContext context, {Set<MaterialState> materialStates, Map<String, dynamic> extraInfo}) {
+  Color titleTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
     materialStates ??= <MaterialState>{};
 
     if (materialStates.isPressed) {
@@ -111,51 +111,51 @@ class CupertinoDarkSettingsSkin extends CupertinoSettingsSkin {
   }
 
   @override
-  Color subtitleTextColor(BuildContext context, {Set<MaterialState> materialStates, Map<String, dynamic> extraInfo}) {
+  Color subtitleTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
     return titleTextColor(context, materialStates: materialStates, extraInfo: extraInfo);
   }
 
   @override
-  Color valueTextColor(BuildContext context, {Set<MaterialState> materialStates, Map<String, dynamic> extraInfo}) {
+  Color valueTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
     materialStates ??= <MaterialState>{};
     return materialStates.isPressed ? HexColor.fromHex('#6e6e72') : HexColor.fromHex('#5a5a5f');
   }
 
   // - - Switch
   @override
-  Color switchActiveColor(BuildContext context, {Set<MaterialState> materialStates, Map<String, dynamic> extraInfo}) {
+  Color? switchActiveColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
     materialStates ??= <MaterialState>{};
     return HexColor.fromHex('#35c759').withAlpha(materialStates.isDisabled ? 100 : 255);
   }
 
   @override
-  Color switchTrackColor(BuildContext context, {Set<MaterialState> materialStates, Map<String, dynamic> extraInfo}) {
+  Color? switchTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
     materialStates ??= <MaterialState>{};
     return HexColor.fromHex('#39393d').withAlpha(materialStates.isDisabled ? 100 : 255);
   }
 
   // - - Slider
   @override
-  Color sliderActiveColor(BuildContext context, {Set<MaterialState> materialStates, Map<String, dynamic> extraInfo}) {
+  Color? sliderActiveColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
     return primaryColor(materialStates: materialStates);
   }
 
   @override
-  Color sliderThumbColor(BuildContext context, {Set<MaterialState> materialStates, Map<String, dynamic> extraInfo}) {
+  Color? sliderThumbColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
     return Colors.white;
   }
 
   // - - misc
   @override
-  Color keylineColor(BuildContext context, {Map<String, dynamic> extraInfo}) {
+  Color keylineColor(BuildContext context, {Map<String, dynamic>? extraInfo}) {
     return showKeylines(context) ? HexColor.fromHex('#28282a') : Colors.transparent;
   }
 
   @override
-  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<MaterialState> materialStates, Map<String, dynamic> extraInfo}) {
+  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
     materialStates ??= <MaterialState>{};
 
-    switch (accessoryType ?? AccessoryType.None) {
+    switch (accessoryType) {
       case AccessoryType.Check:
         return primaryColor(materialStates: materialStates);
 

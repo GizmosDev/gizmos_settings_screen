@@ -26,7 +26,7 @@ class ButtonSettingsCell extends SettingsCell {
   final ButtonType type;
   final String title;
   final String subtitle;
-  final Widget leadingWidget;
+  final Widget? leadingWidget;
   final AccessoryType accessoryType;
 
   // Constructor
@@ -41,18 +41,15 @@ class ButtonSettingsCell extends SettingsCell {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [onPressed] the function to call when the button is pressed
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  ButtonSettingsCell({Key key, Set<MaterialState> initialStates, ButtonType type, this.title, this.subtitle, Widget leadingWidget, AccessoryType accessoryType, VoidCallback onPressed, Map<String, dynamic> extraInfo})
-      : type = type ?? ButtonType.Normal,
-        leadingWidget = leadingWidget,
-        accessoryType = accessoryType ?? AccessoryType.None,
-        super(key: key, initialStates: initialStates, onPressed: onPressed, extraInfo: extraInfo);
+  ButtonSettingsCell({Key? key, Set<MaterialState>? initialStates, this.type = ButtonType.Normal, this.title = '', this.subtitle = '', this.leadingWidget, this.accessoryType = AccessoryType.None, VoidCallback? onPressed, Map<String, dynamic>? extraInfo})
+      : super(key: key, initialStates: initialStates, onPressed: onPressed, extraInfo: extraInfo);
 
   /// buildContents() is called by the parent's state build() method
   /// - treat this like the build() call of a normal [StatelessWidget], but with the additional [materialStates] object that can be used for customization
   @override
-  Widget buildContents(BuildContext context, {Set<MaterialState> materialStates}) {
+  Widget buildContents(BuildContext context, {Key? key, Set<MaterialState>? materialStates}) {
     materialStates ??= <MaterialState>{};
     var skinDelegate = SettingsSkin.of(context)?.delegate ?? DefaultSkin();
-    return skinDelegate.buttonContent(context, type: type, materialStates: materialStates, title: title, subtitle: subtitle, leadingWidget: leadingWidget, accessoryType: accessoryType, extraInfo: extraInfo);
+    return skinDelegate.buttonContent(context, key: key, type: type, materialStates: materialStates, title: title, subtitle: subtitle, leadingWidget: leadingWidget, accessoryType: accessoryType, extraInfo: extraInfo);
   }
 }

@@ -17,7 +17,7 @@ class OptionView extends StatefulWidget {
   final String title;
 
   // Constructor
-  OptionView({Key key, this.title = 'Dog Breed'}) : super(key: key);
+  OptionView({Key? key, this.title = 'Dog Breed'}) : super(key: key);
 
   // State
   @override

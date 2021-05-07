@@ -16,19 +16,18 @@ import 'package:gizmos_settings_screen/gizmos_settings_screen.dart';
 import 'dog_type.dart';
 import 'main_view.dart';
 
-SharedPreferences prefs;
-
 bool useMaterial = !Platform.isIOS;
 
 // Note: useDarkMode could be enhanced to query the system setting
 bool useDarkMode = false;
 
-SettingsSkinDelegate skinDelegate;
-
 bool defaultSampleBooleanSetting = false;
 double defaultDoubleSetting = 0.5;
 double defaultDoubleSetting2 = 0.5;
 DogType defaultSampleDogType = DogType.CavalierKingCharlesSpaniel;
+
+late SharedPreferences prefs;
+late SettingsSkinDelegate skinDelegate;
 
 class ExampleApp extends StatelessWidget {
   // Build
@@ -49,6 +48,11 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   prefs = await SharedPreferences.getInstance();
+  if (useDarkMode) {
+    skinDelegate = useMaterial ? MaterialDarkSettingsSkin() : CupertinoDarkSettingsSkin();
+  } else {
+    skinDelegate = useMaterial ? MaterialSettingsSkin() : CupertinoSettingsSkin();
+  }
 
   // Check if we've saved a dog type yet, if not assign the default
   // Note: this is only needed because the way I've set up the DogType enum,
