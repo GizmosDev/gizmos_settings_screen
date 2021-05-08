@@ -1,19 +1,6 @@
 name: gizmos_settings_screen
 description: >-
-  A Flutter package for displaying settings screens (or similar screens). I
-  built this after finding it near impossible to customize the look and feel of
-  the other popular settings screen packages. This package takes a different
-  approach and separates the functionality from the UI customization. This lets
-  you create custom skins to better fit into your existing app. There are
-  several skin prototypes included for Cupertino (light and dark modes), and
-  Material (light and dark modes). In most cases, you can just subclass those,
-  alter your colours and move on to the rest of your app.
-
-  This package doesn't depend on any specific package for settings storage. In
-  fact, `gizmos_settings_screen` can be used for any type of general purpose
-  cell based list, it's just that settings is the most obvious use case. The
-  example application included uses `shared_preferences`, but I've also used
-  `flutter_secure_storage` in production apps.
+  A Flutter package for displaying in-app settings screens with a native look and feel.
 version: 0.1.0-nullsafety.1
 homepage: https://gizmos.dev/
 repository: https://github.com/GizmosDev/gizmos_settings_screen
