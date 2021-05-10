@@ -280,7 +280,7 @@ class MaterialSettingsSkin extends DefaultSkin {
 
   // Slider
   @override
-  SliderComponentShape sliderOverlayShape(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  SliderComponentShape? sliderOverlayShape(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
     // var slideThemeData = SliderTheme.of(context);
     // return slideThemeData.overlayShape;
     return RoundSliderOverlayShape(overlayRadius: 0.0);
