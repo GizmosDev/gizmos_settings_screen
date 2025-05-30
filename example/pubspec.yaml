@@ -3,11 +3,13 @@ description: >-
   An example app to showcase `gizmos_settings_screen`. Uses
   `shared_preferences` to store settings in this example, but any storage system
   will work.
-version: 0.1.0-nullsafety.2
-author: Dave Wood
+
+# Contact Info
 homepage: https://gizmos.dev/
 repository: https://github.com/GizmosDev/gizmos_settings_screen
 issue_tracker: https://github.com/GizmosDev/gizmos_settings_screen/issues
+
+version: 0.1.0-nullsafety.2
 
 publish_to: "none"
 
@@ -32,6 +34,7 @@ dependencies:
     path: ../
 
 dev_dependencies:
+  # Testing
   flutter_test:
     sdk: flutter
 

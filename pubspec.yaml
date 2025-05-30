@@ -1,9 +1,13 @@
 name: gizmos_settings_screen
-description: A Flutter package for displaying in-app settings screens with a native look and feel.
-version: 0.1.0-nullsafety.2
+description: >-
+  A Flutter package for displaying in-app settings screens with a native look and feel.
+
+# Contact Info
 homepage: https://gizmos.dev/
 repository: https://github.com/GizmosDev/gizmos_settings_screen
 issue_tracker: https://github.com/GizmosDev/gizmos_settings_screen/issues
+
+version: 0.1.0-nullsafety.2
 
 environment:
   sdk: ">=2.12.0 <3.0.0"
@@ -17,6 +21,7 @@ dependencies:
   pedantic: ^1.11.0
 
 dev_dependencies:
+  # Testing
   flutter_test:
     sdk: flutter
 
