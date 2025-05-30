@@ -39,8 +39,7 @@ class SwitchSettingsCell extends SettingsCell {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [onChanged] callback method called when the value of the swich changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  SwitchSettingsCell({Key? key, Set<WidgetState>? initialStates, this.title = '', this.subtitle = '', this.value = false, this.leadingWidget, this.accessoryType = AccessoryType.None, VoidCallback? onPressed, required this.onChanged, Map<String, dynamic>? extraInfo})
-      : super(key: key, initialStates: initialStates, onPressed: onPressed, extraInfo: extraInfo);
+  SwitchSettingsCell({super.key, super.initialStates, this.title = '', this.subtitle = '', this.value = false, this.leadingWidget, this.accessoryType = AccessoryType.none, super.onPressed, required this.onChanged, super.extraInfo});
 
   /// buildContents() is called by the parent's state build() method
   /// - treat this like the build() call of a normal [StatelessWidget], but with the additional [widgetStates] object that can be used for customization

@@ -162,20 +162,20 @@ class CupertinoDarkSettingsSkin extends CupertinoSettingsSkin {
   }
 
   @override
-  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.none, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     widgetStates ??= <WidgetState>{};
 
     switch (accessoryType) {
-      case AccessoryType.Check:
+      case AccessoryType.check:
         return primaryColor(widgetStates: widgetStates);
 
-      case AccessoryType.Disclosure:
+      case AccessoryType.disclosure:
         return widgetStates.isPressed ? HexColor.fromHex('#6e6e72') : HexColor.fromHex('#5a5a5f');
 
-      case AccessoryType.Custom:
+      case AccessoryType.custom:
         return primaryColor(widgetStates: widgetStates);
 
-      case AccessoryType.None:
+      case AccessoryType.none:
         return Colors.transparent;
     }
   }

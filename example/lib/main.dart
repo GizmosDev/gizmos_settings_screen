@@ -24,12 +24,22 @@ bool useDarkMode = false;
 bool defaultSampleBooleanSetting = false;
 double defaultDoubleSetting = 0.5;
 double defaultDoubleSetting2 = 0.5;
-DogType defaultSampleDogType = DogType.CavalierKingCharlesSpaniel;
+DogType defaultSampleDogType = DogType.cavalierKingCharlesSpaniel;
 
 late SharedPreferences prefs;
 late SettingsSkinDelegate skinDelegate;
 
 class ExampleApp extends StatelessWidget {
+  const ExampleApp({super.key});
+
+  static void updateSkin() {
+    if (useDarkMode) {
+      skinDelegate = useMaterial ? MaterialDarkSettingsSkin() : CupertinoDarkSettingsSkin();
+    } else {
+      skinDelegate = useMaterial ? MaterialSettingsSkin() : CupertinoSettingsSkin();
+    }
+  }
+
   // Build
   @override
   Widget build(BuildContext context) {
@@ -48,11 +58,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   prefs = await SharedPreferences.getInstance();
-  if (useDarkMode) {
-    skinDelegate = useMaterial ? MaterialDarkSettingsSkin() : CupertinoDarkSettingsSkin();
-  } else {
-    skinDelegate = useMaterial ? MaterialSettingsSkin() : CupertinoSettingsSkin();
-  }
+  ExampleApp.updateSkin();
 
   // Check if we've saved a dog type yet, if not assign the default
   // Note: this is only needed because the way I've set up the DogType enum,

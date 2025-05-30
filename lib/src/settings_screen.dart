@@ -30,7 +30,7 @@ class SettingsScreen extends StatelessWidget {
   /// - [shrinkWrap] passed through to [ListView] used to render this widget
   /// - [physics] passed through to [ListView] used to render this widget
   /// - [sections] list of [SettingsSection]'s that compose this screen
-  SettingsScreen({Key? key, this.shrinkWrap = false, this.physics, required this.sections}) : super(key: key);
+  const SettingsScreen({super.key, this.shrinkWrap = false, this.physics, required this.sections});
 
   // Build
   @override

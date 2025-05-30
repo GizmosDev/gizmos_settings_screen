@@ -7,13 +7,13 @@
 //
 
 enum DogType {
-  GoldenRetriever,
-  LabradorRetriever,
-  GermanShepherd,
-  CavalierKingCharlesSpaniel,
-  Boxer,
-  FrenchBulldog,
-  Other,
+  goldenRetriever,
+  labradorRetriever,
+  germanShepherd,
+  cavalierKingCharlesSpaniel,
+  boxer,
+  frenchBulldog,
+  other,
 }
 
 extension DogTypeAdditions on DogType {
@@ -22,7 +22,7 @@ extension DogTypeAdditions on DogType {
     for (var index = 0; index < dogTypes.length; ++index) {
       if (dogTypes[index].id == id) return dogTypes[index];
     }
-    return DogType.Other;
+    return DogType.other;
   }
 
   String get id {
@@ -31,19 +31,19 @@ extension DogTypeAdditions on DogType {
 
   String get description {
     switch (this) {
-      case DogType.GoldenRetriever:
+      case DogType.goldenRetriever:
         return 'Golden Retriever';
-      case DogType.LabradorRetriever:
+      case DogType.labradorRetriever:
         return 'Labrador Retriever';
-      case DogType.GermanShepherd:
+      case DogType.germanShepherd:
         return 'German Shepherd';
-      case DogType.CavalierKingCharlesSpaniel:
+      case DogType.cavalierKingCharlesSpaniel:
         return 'Cavalier King Charles Spaniel';
-      case DogType.Boxer:
+      case DogType.boxer:
         return 'Boxer';
-      case DogType.FrenchBulldog:
+      case DogType.frenchBulldog:
         return 'French Bulldog';
-      case DogType.Other:
+      case DogType.other:
         return 'Other';
     }
   }

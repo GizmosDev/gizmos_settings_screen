@@ -256,20 +256,20 @@ class MaterialSettingsSkin extends DefaultSkin {
   }
 
   @override
-  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.none, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     widgetStates ??= <WidgetState>{};
 
     switch (accessoryType) {
-      case AccessoryType.Check:
+      case AccessoryType.check:
         return primaryColor(widgetStates: widgetStates);
 
-      case AccessoryType.Disclosure:
+      case AccessoryType.disclosure:
         return widgetStates.isPressed ? HexColor.fromHex('#a4a4aa') : HexColor.fromHex('#c4c4c7');
 
-      case AccessoryType.Custom:
+      case AccessoryType.custom:
         return primaryColor(widgetStates: widgetStates);
 
-      case AccessoryType.None:
+      case AccessoryType.none:
         return Colors.transparent;
     }
   }
@@ -476,18 +476,18 @@ class MaterialSettingsSkin extends DefaultSkin {
   }
 
   @override
-  Widget? accessoryWidget(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+  Widget? accessoryWidget(BuildContext context, {AccessoryType accessoryType = AccessoryType.none, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     Widget? accessoryWidget;
 
     switch (accessoryType) {
-      case AccessoryType.Check:
+      case AccessoryType.check:
         accessoryWidget = Icon(
           Icons.check,
           color: accessoryColor(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo),
         );
         break;
 
-      case AccessoryType.Disclosure:
+      case AccessoryType.disclosure:
         accessoryWidget = Icon(
           Icons.arrow_forward_ios_rounded,
           color: accessoryColor(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo),
@@ -495,7 +495,7 @@ class MaterialSettingsSkin extends DefaultSkin {
         );
         break;
 
-      case AccessoryType.Custom:
+      case AccessoryType.custom:
         if (extraInfo != null) {
           var customAccessoryWidget = extraInfo['CustomAccessory'] as Widget?;
           if (customAccessoryWidget != null) {
@@ -504,7 +504,7 @@ class MaterialSettingsSkin extends DefaultSkin {
         }
         break;
 
-      case AccessoryType.None:
+      case AccessoryType.none:
         break;
     }
 
@@ -639,7 +639,7 @@ class MaterialSettingsSkin extends DefaultSkin {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget detailsContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', String value = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo}) {
+  Widget detailsContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', String value = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.none, Map<String, dynamic>? extraInfo}) {
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
     var parts = <String>[];
@@ -670,9 +670,9 @@ class MaterialSettingsSkin extends DefaultSkin {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty) Text('$title', style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (title.isNotEmpty) Text(title, style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
                   if (title.isNotEmpty && combinedValueAndSubtitle.isNotEmpty) verticalPadding(context, extraInfo: extraInfo),
-                  if (combinedValueAndSubtitle.isNotEmpty) Text('$combinedValueAndSubtitle', style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (combinedValueAndSubtitle.isNotEmpty) Text(combinedValueAndSubtitle, style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
                 ],
               ),
             ),
@@ -697,7 +697,7 @@ class MaterialSettingsSkin extends DefaultSkin {
   /// - [onChanged] callback method called when the value of the swich changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget switchContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', bool value = false, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(bool) onChanged, Map<String, dynamic>? extraInfo}) {
+  Widget switchContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', bool value = false, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.none, required Function(bool) onChanged, Map<String, dynamic>? extraInfo}) {
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
     return Container(
@@ -719,9 +719,9 @@ class MaterialSettingsSkin extends DefaultSkin {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty) Text('$title', style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (title.isNotEmpty) Text(title, style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
                   if (title.isNotEmpty && subtitle.isNotEmpty) verticalPadding(context, extraInfo: extraInfo),
-                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (subtitle.isNotEmpty) Text(subtitle, style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
                 ],
               ),
             ),
@@ -762,7 +762,7 @@ class MaterialSettingsSkin extends DefaultSkin {
   /// - [onChanged] callback method called when the value of the slider changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget sliderContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', double value = 0.0, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(double) onChanged, Map<String, dynamic>? extraInfo}) {
+  Widget sliderContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', double value = 0.0, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.none, required Function(double) onChanged, Map<String, dynamic>? extraInfo}) {
     widgetStates ??= <WidgetState>{};
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
@@ -785,9 +785,9 @@ class MaterialSettingsSkin extends DefaultSkin {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty) Text('$title', style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (title.isNotEmpty) Text(title, style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
                   if (title.isNotEmpty && subtitle.isNotEmpty) verticalPadding(context, extraInfo: extraInfo),
-                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (subtitle.isNotEmpty) Text(subtitle, style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
                   verticalPadding(context, extraInfo: extraInfo),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
@@ -848,7 +848,7 @@ class MaterialSettingsSkin extends DefaultSkin {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget buttonContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, ButtonType type = ButtonType.Normal, String title = '', String subtitle = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo}) {
+  Widget buttonContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, ButtonType type = ButtonType.normal, String title = '', String subtitle = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.none, Map<String, dynamic>? extraInfo}) {
     widgetStates ??= <WidgetState>{};
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
@@ -856,16 +856,16 @@ class MaterialSettingsSkin extends DefaultSkin {
     var subtitleTextStyle = this.subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo);
     var textColor = Colors.transparent;
     switch (type) {
-      case ButtonType.Normal:
+      case ButtonType.normal:
         textColor = primaryColor();
         break;
-      case ButtonType.Destructive:
+      case ButtonType.destructive:
         textColor = Colors.red;
         break;
-      case ButtonType.Cancel:
+      case ButtonType.cancel:
         textColor = Colors.grey;
         break;
-      case ButtonType.Custom:
+      case ButtonType.custom:
         break;
     }
 
@@ -894,8 +894,8 @@ class MaterialSettingsSkin extends DefaultSkin {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty) Text('$title', style: titleTextStyle, overflow: TextOverflow.ellipsis),
-                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle, overflow: TextOverflow.ellipsis),
+                  if (title.isNotEmpty) Text(title, style: titleTextStyle, overflow: TextOverflow.ellipsis),
+                  if (subtitle.isNotEmpty) Text(subtitle, style: subtitleTextStyle, overflow: TextOverflow.ellipsis),
                 ],
               ),
             ),

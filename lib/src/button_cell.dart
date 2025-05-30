@@ -40,8 +40,7 @@ class ButtonSettingsCell extends SettingsCell {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [onPressed] the function to call when the button is pressed
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  ButtonSettingsCell({Key? key, Set<WidgetState>? initialStates, this.type = ButtonType.Normal, this.title = '', this.subtitle = '', this.leadingWidget, this.accessoryType = AccessoryType.None, VoidCallback? onPressed, Map<String, dynamic>? extraInfo})
-      : super(key: key, initialStates: initialStates, onPressed: onPressed, extraInfo: extraInfo);
+  ButtonSettingsCell({super.key, super.initialStates, this.type = ButtonType.normal, this.title = '', this.subtitle = '', this.leadingWidget, this.accessoryType = AccessoryType.none, super.onPressed, super.extraInfo});
 
   /// buildContents() is called by the parent's state build() method
   /// - treat this like the build() call of a normal [StatelessWidget], but with the additional [widgetStates] object that can be used for customization

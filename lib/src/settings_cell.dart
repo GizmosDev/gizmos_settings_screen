@@ -36,14 +36,10 @@ abstract class SettingsCell extends StatefulWidget {
   /// - [initialStates] any initial material states that should be applied to this cell (disabled/selected etc)
   /// - [onPressed] a callback that will be executed when the cell is pressed
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  SettingsCell({Key? key, Set<WidgetState>? initialStates, this.onPressed, this.extraInfo})
-      : initialStates = initialStates ?? <WidgetState>{},
-        super(key: key);
+  SettingsCell({super.key, Set<WidgetState>? initialStates, this.onPressed, this.extraInfo}) : initialStates = initialStates ?? <WidgetState>{};
 
   @override
-  SettingsCellState createState() {
-    return SettingsCellState(initialStates: initialStates);
-  }
+  SettingsCellState createState() => SettingsCellState();
 
   /// buildContents() is called by the parent's state build() method
   /// - treat this like the build() call of a normal [StatelessWidget], but with the additional [widgetStates] object that can be used for customization
@@ -59,11 +55,9 @@ class SettingsCellState<T extends SettingsCell> extends State<T> {
   // can at times actually do something differently.
 
   // Fields
-  final Set<WidgetState> _widgetStates;
+  final Set<WidgetState> _widgetStates = <WidgetState>{};
 
   // Properties
-  @override
-  T get widget => super.widget;
 
   /// Whether or not the widget's [WidgetState]'s include the [isPressed] state
   bool get isPressed => _widgetStates.isPressed;
@@ -87,13 +81,13 @@ class SettingsCellState<T extends SettingsCell> extends State<T> {
   VoidCallback get onPressed => widget.onPressed ?? () {};
 
   // Constructor
-  SettingsCellState({Set<WidgetState>? initialStates})
-      : _widgetStates = initialStates ?? <WidgetState>{},
-        super();
+  SettingsCellState() : super();
 
   @override
   void initState() {
     super.initState();
+    _widgetStates.clear();
+    _widgetStates.addAll(widget.initialStates);
     // See note re: ButtonStyleButton
     // _updateState(WidgetState.disabled, !hasAction);
   }
@@ -140,7 +134,6 @@ class SettingsCellState<T extends SettingsCell> extends State<T> {
     );
   }
 
-  // Material State Methods (not to be confused with widget state)
   void _updateState(WidgetState state, bool value) {
     value ? _widgetStates.add(state) : _widgetStates.remove(state);
   }

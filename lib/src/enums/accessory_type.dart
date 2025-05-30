@@ -11,17 +11,17 @@ library;
 /// AccessoryType
 /// an image/icon or custom widget that applies a common meaning to the cell (disclosure -> more info, check -> selected option etc)
 enum AccessoryType {
-  /// None - No accessory
-  None,
+  /// none - No accessory
+  none,
 
-  /// Disclosure - A disclosure arrow
-  Disclosure,
+  /// disclosure - A disclosure arrow
+  disclosure,
 
-  /// Check - A checkmark
-  Check,
+  /// check - A checkmark
+  check,
 
-  /// Custom - A custom accessory, implement this in your custom skin using values included in the extraInfo map
-  Custom,
+  /// custom - A custom accessory, implement this in your custom skin using values included in the extraInfo map
+  custom,
 }
 
 /// Helpful extensions on [AccessoryType]
@@ -29,13 +29,13 @@ extension AccessoryTypeAdditions on AccessoryType {
   /// Description - textual name of the accessory type (useful for debugging)
   String get description {
     switch (this) {
-      case AccessoryType.None:
+      case AccessoryType.none:
         return 'None';
-      case AccessoryType.Disclosure:
+      case AccessoryType.disclosure:
         return 'Disclosure';
-      case AccessoryType.Check:
+      case AccessoryType.check:
         return 'Check';
-      case AccessoryType.Custom:
+      case AccessoryType.custom:
         return 'Custom';
     }
   }

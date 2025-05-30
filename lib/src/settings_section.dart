@@ -34,7 +34,7 @@ class SettingsSection extends StatelessWidget {
   /// - [footer] text to appear in the footer of this section
   /// - [footerInfo] [extraInfo] for the footer where you can pass additional info through to your subclasses to be used however you need
   /// - [cells] list of [SettingsCell] subclasses that will make up this section
-  SettingsSection({Key? key, this.header, this.headerInfo, this.footer, this.footerInfo, required this.cells}) : super(key: key);
+  const SettingsSection({super.key, this.header, this.headerInfo, this.footer, this.footerInfo, required this.cells});
 
   // Build
   @override

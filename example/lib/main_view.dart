@@ -19,22 +19,11 @@ class MainView extends StatefulWidget {
   final String title;
 
   // Constructor
-  MainView({Key? key, required this.title}) : super(key: key);
+  const MainView({super.key, required this.title});
 
   // State
   @override
-  _MainViewState createState() {
-    updateSkin();
-    return _MainViewState();
-  }
-
-  void updateSkin() {
-    if (useDarkMode) {
-      skinDelegate = useMaterial ? MaterialDarkSettingsSkin() : CupertinoDarkSettingsSkin();
-    } else {
-      skinDelegate = useMaterial ? MaterialSettingsSkin() : CupertinoSettingsSkin();
-    }
-  }
+  State<MainView> createState() => _MainViewState();
 }
 
 class _MainViewState extends State<MainView> {
@@ -77,22 +66,22 @@ class _MainViewState extends State<MainView> {
             header: 'Theme Options',
             cells: [
               ButtonSettingsCell(
-                type: ButtonType.Normal,
+                type: ButtonType.normal,
                 title: useDarkMode ? 'Switch to Light' : 'Switch to Dark',
                 onPressed: () {
                   useDarkMode = !useDarkMode;
                   setState(() {
-                    widget.updateSkin();
+                    ExampleApp.updateSkin();
                   });
                 },
               ),
               ButtonSettingsCell(
-                type: ButtonType.Normal,
+                type: ButtonType.normal,
                 title: useMaterial ? 'Switch to Cupertino' : 'Switch to Material',
                 onPressed: () {
                   useMaterial = !useMaterial;
                   setState(() {
-                    widget.updateSkin();
+                    ExampleApp.updateSkin();
                   });
                 },
               ),
@@ -172,7 +161,7 @@ class _MainViewState extends State<MainView> {
               DetailsSettingsCell(
                 title: 'Dog breed',
                 value: (DogTypeAdditions.fromId(prefs.getString('sampleDogType')).description),
-                accessoryType: AccessoryType.Disclosure,
+                accessoryType: AccessoryType.disclosure,
                 onPressed: () async {
                   await Navigator.of(context).push(MaterialPageRoute<OptionView>(builder: (context) => OptionView(title: 'Dog Breed')));
                   setState(() {});
@@ -180,22 +169,22 @@ class _MainViewState extends State<MainView> {
               ),
               DetailsSettingsCell(
                 title: 'Checkmark accessory',
-                accessoryType: AccessoryType.Check,
+                accessoryType: AccessoryType.check,
               ),
               DetailsSettingsCell(
                 title: 'A custom accessory',
-                accessoryType: AccessoryType.Custom,
+                accessoryType: AccessoryType.custom,
                 extraInfo: <String, dynamic>{'CustomAccessory': Icon(Icons.info_outline_rounded, color: skinDelegate.primaryColor())},
               ),
               ButtonSettingsCell(
-                type: ButtonType.Normal,
+                type: ButtonType.normal,
                 title: 'Do something',
                 onPressed: () async {
                   return await showSimpleAlert('Did something', 'Was it everything you\'d hoped it would be?');
                 },
               ),
               ButtonSettingsCell(
-                type: ButtonType.Normal,
+                type: ButtonType.normal,
                 title: 'Do something else',
                 subtitle: 'With a subtitle',
                 onPressed: () async {
@@ -203,21 +192,21 @@ class _MainViewState extends State<MainView> {
                 },
               ),
               ButtonSettingsCell(
-                type: ButtonType.Cancel,
+                type: ButtonType.cancel,
                 title: 'Cancel',
                 onPressed: () async {
                   return await showSimpleAlert('Cancelled', 'Not that you\'d notice...');
                 },
               ),
               ButtonSettingsCell(
-                type: ButtonType.Destructive,
+                type: ButtonType.destructive,
                 title: 'Destroy!',
                 onPressed: () async {
                   return await showSimpleAlert('Destroyed', 'It\'ll be back.');
                 },
               ),
               ButtonSettingsCell(
-                type: ButtonType.Destructive,
+                type: ButtonType.destructive,
                 initialStates: {WidgetState.disabled},
                 title: 'Destroy (Disabled)',
                 onPressed: () async {
@@ -225,7 +214,7 @@ class _MainViewState extends State<MainView> {
                 },
               ),
               ButtonSettingsCell(
-                type: ButtonType.Normal,
+                type: ButtonType.normal,
                 initialStates: {WidgetState.disabled},
                 title: 'Disabled',
                 onPressed: () async {

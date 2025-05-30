@@ -18,11 +18,11 @@ class OptionView extends StatefulWidget {
   final String title;
 
   // Constructor
-  OptionView({Key? key, this.title = 'Dog Breed'}) : super(key: key);
+  const OptionView({super.key, this.title = 'Dog Breed'});
 
   // State
   @override
-  _OptionViewState createState() => _OptionViewState();
+  State<OptionView> createState() => _OptionViewState();
 }
 
 class _OptionViewState extends State<OptionView> {
@@ -34,19 +34,20 @@ class _OptionViewState extends State<OptionView> {
     var cells = <SettingsCell>[];
     var sampleDogType = DogTypeAdditions.fromId(prefs.getString('sampleDogType'));
 
-    DogType.values.forEach((dogType) {
-      var cell = DetailsSettingsCell(
+    for (var dogType in DogType.values) {
+      final cell = DetailsSettingsCell(
         title: dogType.description,
-        accessoryType: dogType == sampleDogType ? AccessoryType.Check : AccessoryType.None,
+        accessoryType: dogType == sampleDogType ? AccessoryType.check : AccessoryType.none,
         onPressed: () async {
           await prefs.setString('sampleDogType', dogType.id);
           setState(() {});
+          if (!context.mounted) return;
           Navigator.of(context).pop();
         },
       );
 
       cells.add(cell);
-    });
+    }
 
     var settingsScreen = SettingsSkin(
       delegate: skinDelegate,
