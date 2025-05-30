@@ -7,6 +7,7 @@
 //
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gizmos_settings_screen/gizmos_settings_screen.dart';
 
 import 'dog_type.dart';
@@ -64,7 +65,9 @@ class _OptionViewState extends State<OptionView> {
         iconTheme: IconThemeData(
           color: skinDelegate.primaryColor(), //change your color here
         ),
-        brightness: useDarkMode ? Brightness.dark : Brightness.light,
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarBrightness: useDarkMode ? Brightness.dark : Brightness.light,
+        ),
         backgroundColor: skinDelegate.appHeaderBackgroundColor(context),
       ),
       body: SafeArea(

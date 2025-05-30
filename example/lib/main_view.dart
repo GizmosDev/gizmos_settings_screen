@@ -7,6 +7,7 @@
 //
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:gizmos_settings_screen/gizmos_settings_screen.dart';
 
 import 'dog_type.dart';
@@ -160,7 +161,7 @@ class _MainViewState extends State<MainView> {
                 },
               ),
               SliderSettingsCell(
-                initialStates: {MaterialState.disabled},
+                initialStates: {WidgetState.disabled},
                 title: 'A disabled slider',
                 value: prefs.getDouble('sampleDoubleSetting2') ?? defaultDoubleSetting2,
                 onChanged: (value) async {
@@ -217,7 +218,7 @@ class _MainViewState extends State<MainView> {
               ),
               ButtonSettingsCell(
                 type: ButtonType.Destructive,
-                initialStates: {MaterialState.disabled},
+                initialStates: {WidgetState.disabled},
                 title: 'Destroy (Disabled)',
                 onPressed: () async {
                   return await showSimpleAlert('Peek-a-boo!', 'This shouldn\'t run since the button is disabled.');
@@ -225,7 +226,7 @@ class _MainViewState extends State<MainView> {
               ),
               ButtonSettingsCell(
                 type: ButtonType.Normal,
-                initialStates: {MaterialState.disabled},
+                initialStates: {WidgetState.disabled},
                 title: 'Disabled',
                 onPressed: () async {
                   return await showSimpleAlert('Peek-a-boo!', 'This shouldn\'t run since the button is disabled.');
@@ -243,7 +244,9 @@ class _MainViewState extends State<MainView> {
         iconTheme: IconThemeData(
           color: skinDelegate.primaryColor(), //change your color here
         ),
-        brightness: useDarkMode ? Brightness.dark : Brightness.light,
+        systemOverlayStyle: SystemUiOverlayStyle(
+          statusBarBrightness: useDarkMode ? Brightness.dark : Brightness.light,
+        ),
         backgroundColor: skinDelegate.appHeaderBackgroundColor(context),
       ),
       body: SafeArea(

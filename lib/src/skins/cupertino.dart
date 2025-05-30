@@ -8,10 +8,8 @@
 
 library;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../enums/button_type.dart';
 import '../enums/accessory_type.dart';
@@ -30,9 +28,9 @@ class CupertinoSettingsSkin extends DefaultSkin {
   // - Colours
   // - - tints
   @override
-  Color primaryColor({Set<MaterialState>? materialStates}) {
-    materialStates ??= <MaterialState>{};
-    return Colors.blue.withAlpha(materialStates.isDisabled ? 100 : 255);
+  Color primaryColor({Set<WidgetState>? widgetStates}) {
+    widgetStates ??= <WidgetState>{};
+    return Colors.blue.withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
   // - - backgrounds
@@ -62,16 +60,16 @@ class CupertinoSettingsSkin extends DefaultSkin {
   }
 
   @override
-  Color cellBackgroundColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
+  Color cellBackgroundColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
 
-    if (materialStates.isPressed) {
+    if (widgetStates.isPressed) {
       return HexColor.fromHex('#d1d1d6');
-    } else if (materialStates.isHovering || materialStates.isFocused) {
+    } else if (widgetStates.isHovering || widgetStates.isFocused) {
       return primaryColor().withAlpha(50);
-    } else if (materialStates.isSelected) {
+    } else if (widgetStates.isSelected) {
       return primaryColor().withAlpha(100);
-    } else if (materialStates.isDisabled) {
+    } else if (widgetStates.isDisabled) {
       return Colors.grey[200] ?? Colors.grey;
     } else {
       // isNormal
@@ -96,16 +94,16 @@ class CupertinoSettingsSkin extends DefaultSkin {
   }
 
   @override
-  Color titleTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
+  Color titleTextColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
 
-    if (materialStates.isPressed) {
+    if (widgetStates.isPressed) {
       return Colors.grey[900] ?? Colors.grey;
-    } else if (materialStates.isHovering || materialStates.isFocused) {
+    } else if (widgetStates.isHovering || widgetStates.isFocused) {
       return (Colors.grey[900] ?? Colors.grey).withAlpha(100);
-    } else if (materialStates.isSelected) {
+    } else if (widgetStates.isSelected) {
       return (Colors.grey[900] ?? Colors.grey).withAlpha(200);
-    } else if (materialStates.isDisabled) {
+    } else if (widgetStates.isDisabled) {
       return Colors.grey;
     } else {
       // isNormal
@@ -114,34 +112,47 @@ class CupertinoSettingsSkin extends DefaultSkin {
   }
 
   @override
-  Color subtitleTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    return titleTextColor(context, materialStates: materialStates, extraInfo: extraInfo);
+  Color subtitleTextColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    return titleTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo);
   }
 
   @override
-  Color valueTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color valueTextColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     return HexColor.fromHex('#929295');
   }
 
   // - - Switch
   @override
-  Color? switchActiveColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('#35c759').withAlpha(materialStates.isDisabled ? 100 : 255);
-  }
-
-  Color? switchTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('#e9e9eb').withAlpha(materialStates.isDisabled ? 100 : 255);
-  }
-
-  // - - Slider
-  Color? sliderActiveColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    return primaryColor(materialStates: materialStates);
+  Color? switchActiveColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#ffffff').withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
   @override
-  Color? sliderThumbColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? switchActiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#35c759').withAlpha(widgetStates.isDisabled ? 100 : 255);
+  }
+
+  @override
+  Color? switchInactiveThumbColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#ffffff').withAlpha(widgetStates.isDisabled ? 100 : 255);
+  }
+
+  @override
+  Color? switchInactiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#e9e9eb').withAlpha(widgetStates.isDisabled ? 100 : 255);
+  }
+
+  // - - Slider
+  Color? sliderActiveColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    return primaryColor(widgetStates: widgetStates);
+  }
+
+  @override
+  Color? sliderThumbColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     return Colors.white;
   }
 
@@ -152,21 +163,20 @@ class CupertinoSettingsSkin extends DefaultSkin {
   }
 
   @override
-  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
+  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
 
     switch (accessoryType) {
       case AccessoryType.Check:
-        return primaryColor(materialStates: materialStates);
+        return primaryColor(widgetStates: widgetStates);
 
       case AccessoryType.Disclosure:
-        return materialStates.isPressed ? HexColor.fromHex('#a4a4aa') : HexColor.fromHex('#c4c4c7');
+        return widgetStates.isPressed ? HexColor.fromHex('#a4a4aa') : HexColor.fromHex('#c4c4c7');
 
       case AccessoryType.Custom:
-        return primaryColor(materialStates: materialStates);
+        return primaryColor(widgetStates: widgetStates);
 
       case AccessoryType.None:
-      default:
         return Colors.transparent;
     }
   }
@@ -192,19 +202,19 @@ class CupertinoSettingsSkin extends DefaultSkin {
 
   // - title
   @override
-  TextStyle titleTextStyle(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: titleTextColor(context, materialStates: materialStates, extraInfo: extraInfo), fontFamily: 'Helvetica Neue', fontSize: 17, fontWeight: FontWeight.w400);
+  TextStyle titleTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    return TextStyle(color: titleTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo), fontFamily: 'Helvetica Neue', fontSize: 17, fontWeight: FontWeight.w400);
   }
 
   @override
-  TextStyle subtitleTextStyle(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: subtitleTextColor(context, materialStates: materialStates, extraInfo: extraInfo), fontFamily: 'Helvetica Neue', fontSize: 12, fontWeight: FontWeight.w300);
+  TextStyle subtitleTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    return TextStyle(color: subtitleTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo), fontFamily: 'Helvetica Neue', fontSize: 12, fontWeight: FontWeight.w300);
   }
 
   // - value
   @override
-  TextStyle valueTextStyle(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: valueTextColor(context, materialStates: materialStates, extraInfo: extraInfo), fontFamily: 'Helvetica Neue', fontSize: 16, fontWeight: FontWeight.w400);
+  TextStyle valueTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    return TextStyle(color: valueTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo), fontFamily: 'Helvetica Neue', fontSize: 16, fontWeight: FontWeight.w400);
   }
 
   // Dimensions
@@ -220,7 +230,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
 
   @override
   double rowHeight(BuildContext context, {Map<String, dynamic>? extraInfo}) {
-    return 40.0;
+    return 44.0;
   }
 
   @override
@@ -284,21 +294,21 @@ class CupertinoSettingsSkin extends DefaultSkin {
   }
 
   @override
-  Widget? accessoryWidget(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Widget? accessoryWidget(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     Widget? accessoryWidget;
 
     switch (accessoryType) {
       case AccessoryType.Check:
         accessoryWidget = Icon(
           Icons.check,
-          color: accessoryColor(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo),
+          color: accessoryColor(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo),
         );
         break;
 
       case AccessoryType.Disclosure:
         accessoryWidget = Icon(
           Icons.arrow_forward_ios_rounded,
-          color: accessoryColor(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo),
+          color: accessoryColor(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo),
           size: 14.0,
         );
         break;
@@ -313,7 +323,6 @@ class CupertinoSettingsSkin extends DefaultSkin {
         break;
 
       case AccessoryType.None:
-      default:
         break;
     }
 
@@ -321,7 +330,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
   }
 
   @override
-  Widget wrappedLeadingWidget(BuildContext context, {Key? key, Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo, Widget? child}) {
+  Widget wrappedLeadingWidget(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo, Widget? child}) {
     child ??= SizedBox.shrink();
     return Center(key: key, child: Container(color: Colors.transparent, alignment: Alignment.center, child: child));
   }
@@ -400,38 +409,38 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// Settings Cell Topper
   /// - a widget to appear above of the settings cell (keyline or something)
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [cellIndex] the index number of this cell in its section
   /// - [cellCount] the total number of cells in its section
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget settingsCellTop(BuildContext context, {Key? key, Set<MaterialState>? materialStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo}) {
+  Widget settingsCellTop(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo}) {
     return cellIndex == 0 ? keyline(context, key: key, extraInfo: extraInfo) : SizedBox.shrink();
   }
 
   /// Settings Cell Bottom
   /// - a widget to appear below of the settings cell (keyline or something)
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [cellIndex] the index number of this cell in its section
   /// - [cellCount] the total number of cells in its section
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget settingsCellBottom(BuildContext context, {Key? key, Set<MaterialState>? materialStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo}) {
+  Widget settingsCellBottom(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo}) {
     return keyline(context, key: key, indent: cellIndex < (cellCount - 1) ? 20 : 0, extraInfo: extraInfo);
   }
 
   /// Setting Cell
   /// This generates the frame of a settings cell, with the contents supplied by the [child] parameter
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   /// - [child] the rendered contents of the cell, possibly generated via one of the ...Content() methods below
   @override
-  Widget settingsCell(BuildContext context, {Key? key, Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo, required Widget child}) {
+  Widget settingsCell(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo, required Widget child}) {
     return Container(
       key: key,
-      color: cellBackgroundColor(context, materialStates: materialStates, extraInfo: extraInfo),
+      color: cellBackgroundColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
       // height: rowHeight(context, extraInfo: extraInfo),
       child: child,
     );
@@ -440,7 +449,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// Details Content
   /// This generates the internal contents of a standard details cell with an optional icon/image, title, subtitle, value and accessory
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [title] main text description
   /// - [subtitle] secondary text description
   /// - [value] current value for this setting/cell
@@ -448,8 +457,8 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget detailsContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, String title = '', String subtitle = '', String value = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo}) {
-    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo);
+  Widget detailsContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', String value = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo}) {
+    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
     return Container(
       key: key,
@@ -473,8 +482,8 @@ class CupertinoSettingsSkin extends DefaultSkin {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty) Text('$title', style: titleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
-                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (title.isNotEmpty) Text('$title', style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
                 ],
               ),
             ),
@@ -500,7 +509,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// Switch Content
   /// This generates the internal contents of a toggle/switch cell with an optional icon/image, title, subtitle, value (used to set the initial value of the switch) and accessory
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [title] main text description
   /// - [subtitle] secondary text description
   /// - [value] current value for this setting/cell
@@ -509,8 +518,8 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// - [onChanged] callback method called when the value of the swich changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget switchContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, String title = '', String subtitle = '', bool value = false, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(bool) onChanged, Map<String, dynamic>? extraInfo}) {
-    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo);
+  Widget switchContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', bool value = false, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(bool) onChanged, Map<String, dynamic>? extraInfo}) {
+    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
     return Container(
       key: key,
@@ -532,8 +541,8 @@ class CupertinoSettingsSkin extends DefaultSkin {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty) Text('$title', style: titleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
-                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (title.isNotEmpty) Text('$title', style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
                 ],
               ),
             ),
@@ -543,8 +552,10 @@ class CupertinoSettingsSkin extends DefaultSkin {
             child: Align(
               alignment: AlignmentDirectional.centerEnd,
               child: CupertinoSwitch(
-                activeColor: switchActiveColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                trackColor: switchTrackColor(context, materialStates: materialStates, extraInfo: extraInfo),
+                thumbColor: switchActiveColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                activeTrackColor: switchActiveTrackColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                inactiveThumbColor: switchInactiveThumbColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                inactiveTrackColor: switchInactiveTrackColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
                 value: value,
                 onChanged: onChanged,
               ),
@@ -561,7 +572,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// Slider Content
   /// This generates the internal contents of a slider cell with an optional icon/image, title, subtitle, value (used to set the initial value of the slider) and accessory
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [title] main text description
   /// - [subtitle] secondary text description
   /// - [value] current value for this setting/cell
@@ -570,9 +581,9 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// - [onChanged] callback method called when the value of the slider changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget sliderContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, String title = '', String subtitle = '', double value = 0.0, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(double) onChanged, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo);
+  Widget sliderContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', double value = 0.0, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(double) onChanged, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
     return Container(
       key: key,
@@ -594,8 +605,8 @@ class CupertinoSettingsSkin extends DefaultSkin {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty) Text('$title', style: titleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
-                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (title.isNotEmpty) Text('$title', style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
                 ],
               ),
             ),
@@ -605,9 +616,9 @@ class CupertinoSettingsSkin extends DefaultSkin {
             child: Align(
               alignment: AlignmentDirectional.centerEnd,
               child: CupertinoSlider(
-                activeColor: sliderActiveColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                thumbColor: sliderThumbColor(context, materialStates: materialStates, extraInfo: extraInfo) ?? CupertinoColors.white,
-                onChanged: materialStates.isDisabled ? null : onChanged,
+                activeColor: sliderActiveColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                thumbColor: sliderThumbColor(context, widgetStates: widgetStates, extraInfo: extraInfo) ?? CupertinoColors.white,
+                onChanged: widgetStates.isDisabled ? null : onChanged,
                 value: value,
               ),
             ),
@@ -624,7 +635,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// This generates the internal contents of a button cell with an optional icon/image, title, subtitle, and accessory
   /// Note: the callback to handle the button press is handled in the main settings cell, so it isn't passed down to this content method
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [type] a button type (Normal, Cancel, Destructive, or Custom)
   /// - [title] main text description
   /// - [subtitle] secondary text description
@@ -632,12 +643,12 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget buttonContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, ButtonType type = ButtonType.Normal, String title = '', String subtitle = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo);
+  Widget buttonContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, ButtonType type = ButtonType.Normal, String title = '', String subtitle = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
-    var titleTextStyle = this.titleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo);
-    var subtitleTextStyle = this.subtitleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo);
+    var titleTextStyle = this.titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo);
+    var subtitleTextStyle = this.subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo);
     var textColor = Colors.transparent;
     switch (type) {
       case ButtonType.Normal:
@@ -653,7 +664,7 @@ class CupertinoSettingsSkin extends DefaultSkin {
         break;
     }
 
-    if (materialStates.isDisabled) {
+    if (widgetStates.isDisabled) {
       titleTextStyle = titleTextStyle.copyWith(color: textColor.withAlpha(100));
     } else {
       titleTextStyle = titleTextStyle.copyWith(color: textColor);

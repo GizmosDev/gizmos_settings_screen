@@ -8,9 +8,7 @@
 
 library;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../enums/button_type.dart';
 import '../enums/accessory_type.dart';
@@ -29,9 +27,9 @@ class DefaultSkin extends SettingsSkinDelegate {
   // - Colours
   // - - tints
   @override
-  Color primaryColor({Set<MaterialState>? materialStates}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('#1871e3').withAlpha(materialStates.isDisabled ? 100 : 255);
+  Color primaryColor({Set<WidgetState>? widgetStates}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#1871e3').withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
   // - - backgrounds
@@ -61,16 +59,16 @@ class DefaultSkin extends SettingsSkinDelegate {
   }
 
   @override
-  Color cellBackgroundColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
+  Color cellBackgroundColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
 
-    if (materialStates.isPressed) {
+    if (widgetStates.isPressed) {
       return HexColor.fromHex('#d1d1d6');
-    } else if (materialStates.isHovering || materialStates.isFocused) {
+    } else if (widgetStates.isHovering || widgetStates.isFocused) {
       return primaryColor().withAlpha(50);
-    } else if (materialStates.isSelected) {
+    } else if (widgetStates.isSelected) {
       return primaryColor().withAlpha(100);
-    } else if (materialStates.isDisabled) {
+    } else if (widgetStates.isDisabled) {
       return Colors.grey[200] ?? Colors.grey;
     } else {
       // isNormal
@@ -91,16 +89,16 @@ class DefaultSkin extends SettingsSkinDelegate {
     return headerTextColor(context);
   }
 
-  Color titleTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
+  Color titleTextColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
 
-    if (materialStates.isPressed) {
+    if (widgetStates.isPressed) {
       return Colors.grey[900] ?? Colors.grey;
-    } else if (materialStates.isHovering || materialStates.isFocused) {
+    } else if (widgetStates.isHovering || widgetStates.isFocused) {
       return (Colors.grey[900] ?? Colors.grey).withAlpha(100);
-    } else if (materialStates.isSelected) {
+    } else if (widgetStates.isSelected) {
       return (Colors.grey[900] ?? Colors.grey).withAlpha(200);
-    } else if (materialStates.isDisabled) {
+    } else if (widgetStates.isDisabled) {
       return Colors.grey;
     } else {
       // isNormal
@@ -108,16 +106,16 @@ class DefaultSkin extends SettingsSkinDelegate {
     }
   }
 
-  Color subtitleTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
+  Color subtitleTextColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
 
-    if (materialStates.isPressed) {
+    if (widgetStates.isPressed) {
       return Colors.grey[900] ?? Colors.grey;
-    } else if (materialStates.isHovering || materialStates.isFocused) {
+    } else if (widgetStates.isHovering || widgetStates.isFocused) {
       return (Colors.grey[900] ?? Colors.grey).withAlpha(100);
-    } else if (materialStates.isSelected) {
+    } else if (widgetStates.isSelected) {
       return (Colors.grey[900] ?? Colors.grey).withAlpha(200);
-    } else if (materialStates.isDisabled) {
+    } else if (widgetStates.isDisabled) {
       return Colors.grey;
     } else {
       // isNormal
@@ -125,98 +123,98 @@ class DefaultSkin extends SettingsSkinDelegate {
     }
   }
 
-  Color valueTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color valueTextColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     return HexColor.fromHex('#929295');
   }
 
   // - - Switch
-  Color? switchActiveColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('#1871e3').withAlpha(materialStates.isDisabled ? 100 : 255);
+  Color? switchActiveColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#1871e3').withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
-  Color? switchActiveTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('#c4dbf9').withAlpha(materialStates.isDisabled ? 100 : 255);
+  Color? switchActiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#c4dbf9').withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
-  Color? switchInactiveThumbColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('#ececec').withAlpha(materialStates.isDisabled ? 100 : 255);
+  Color? switchInactiveThumbColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#ececec').withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
-  Color? switchInactiveTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('#bdbdbd').withAlpha(materialStates.isDisabled ? 100 : 255);
+  Color? switchInactiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#bdbdbd').withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
-  Color? switchFocusColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    return switchActiveColor(context, materialStates: materialStates, extraInfo: extraInfo)?.withAlpha(50);
+  Color? switchFocusColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    return switchActiveColor(context, widgetStates: widgetStates, extraInfo: extraInfo)?.withAlpha(50);
   }
 
-  Color? switchHoverColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    return switchActiveColor(context, materialStates: materialStates, extraInfo: extraInfo)?.withAlpha(50);
+  Color? switchHoverColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    return switchActiveColor(context, widgetStates: widgetStates, extraInfo: extraInfo)?.withAlpha(50);
   }
 
   // - - Slider
-  Color? sliderActiveTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderActiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     return primaryColor();
   }
 
-  Color? sliderInactiveTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderInactiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     return primaryColor().withAlpha(100);
   }
 
-  Color? sliderDisabledActiveTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderDisabledActiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.disabledActiveTrackColor;
   }
 
-  Color? sliderDisabledInactiveTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderDisabledInactiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.disabledInactiveTrackColor;
   }
 
-  Color? sliderActiveTickMarkColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderActiveTickMarkColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.activeTickMarkColor;
   }
 
-  Color? sliderInactiveTickMarkColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderInactiveTickMarkColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.inactiveTickMarkColor;
   }
 
-  Color? sliderDisabledActiveTickMarkColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderDisabledActiveTickMarkColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.disabledActiveTickMarkColor;
   }
 
-  Color? sliderDisabledInactiveTickMarkColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderDisabledInactiveTickMarkColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.disabledInactiveTickMarkColor;
   }
 
-  Color? sliderThumbColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderThumbColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     return primaryColor();
   }
 
-  Color? sliderOverlappingShapeStrokeColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderOverlappingShapeStrokeColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.overlappingShapeStrokeColor;
   }
 
-  Color? sliderDisabledThumbColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderDisabledThumbColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.disabledThumbColor;
   }
 
-  Color? sliderOverlayColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderOverlayColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.overlayColor;
   }
 
-  Color? sliderValueIndicatorColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderValueIndicatorColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.valueIndicatorColor;
   }
@@ -226,87 +224,86 @@ class DefaultSkin extends SettingsSkinDelegate {
     return showKeylines(context) ? HexColor.fromHex('#e2e2e5') : Colors.transparent;
   }
 
-  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
+  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
 
     switch (accessoryType) {
       case AccessoryType.Check:
-        return primaryColor(materialStates: materialStates);
+        return primaryColor(widgetStates: widgetStates);
 
       case AccessoryType.Disclosure:
-        return materialStates.isPressed ? HexColor.fromHex('#a4a4aa') : HexColor.fromHex('#c4c4c7');
+        return widgetStates.isPressed ? HexColor.fromHex('#a4a4aa') : HexColor.fromHex('#c4c4c7');
 
       case AccessoryType.Custom:
-        return primaryColor(materialStates: materialStates);
+        return primaryColor(widgetStates: widgetStates);
 
       case AccessoryType.None:
-      default:
         return Colors.transparent;
     }
   }
 
   // Slider
-  SliderComponentShape? sliderOverlayShape(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  SliderComponentShape? sliderOverlayShape(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.overlayShape;
   }
 
-  SliderTickMarkShape? sliderTickMarkShape(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  SliderTickMarkShape? sliderTickMarkShape(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.tickMarkShape;
   }
 
-  SliderComponentShape? sliderThumbShape(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  SliderComponentShape? sliderThumbShape(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.thumbShape;
   }
 
-  SliderTrackShape? sliderTrackShape(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  SliderTrackShape? sliderTrackShape(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.trackShape;
   }
 
-  SliderComponentShape? sliderValueIndicatorShape(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  SliderComponentShape? sliderValueIndicatorShape(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.valueIndicatorShape;
   }
 
-  RangeSliderTickMarkShape? sliderRangeTickMarkShape(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  RangeSliderTickMarkShape? sliderRangeTickMarkShape(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.rangeTickMarkShape;
   }
 
-  RangeSliderThumbShape? sliderRangeThumbShape(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  RangeSliderThumbShape? sliderRangeThumbShape(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.rangeThumbShape;
   }
 
-  RangeSliderTrackShape? sliderRangeTrackShape(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  RangeSliderTrackShape? sliderRangeTrackShape(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.rangeTrackShape;
   }
 
-  RangeSliderValueIndicatorShape? sliderRangeValueIndicatorShape(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  RangeSliderValueIndicatorShape? sliderRangeValueIndicatorShape(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.rangeValueIndicatorShape;
   }
 
-  ShowValueIndicator? sliderShowValueIndicator(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  ShowValueIndicator? sliderShowValueIndicator(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.showValueIndicator;
   }
 
-  TextStyle? sliderValueIndicatorTextStyle(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  TextStyle? sliderValueIndicatorTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.valueIndicatorTextStyle;
   }
 
-  double? sliderMinThumbSeparation(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  double? sliderMinThumbSeparation(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.minThumbSeparation;
   }
 
-  RangeThumbSelector? sliderThumbSelector(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  RangeThumbSelector? sliderThumbSelector(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.thumbSelector;
   }
@@ -332,19 +329,19 @@ class DefaultSkin extends SettingsSkinDelegate {
 
   // - title
   @override
-  TextStyle titleTextStyle(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: titleTextColor(context, materialStates: materialStates, extraInfo: extraInfo), fontFamily: 'sans-serif', fontSize: 18, fontWeight: FontWeight.w400);
+  TextStyle titleTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    return TextStyle(color: titleTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo), fontFamily: 'sans-serif', fontSize: 18, fontWeight: FontWeight.w400);
   }
 
   @override
-  TextStyle subtitleTextStyle(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: subtitleTextColor(context, materialStates: materialStates, extraInfo: extraInfo), fontFamily: 'sans-serif', fontSize: 16, fontWeight: FontWeight.w400);
+  TextStyle subtitleTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    return TextStyle(color: subtitleTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo), fontFamily: 'sans-serif', fontSize: 16, fontWeight: FontWeight.w400);
   }
 
   // - value
   @override
-  TextStyle valueTextStyle(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: valueTextColor(context, materialStates: materialStates, extraInfo: extraInfo), fontFamily: 'sans-serif', fontSize: 16, fontWeight: FontWeight.w300);
+  TextStyle valueTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    return TextStyle(color: valueTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo), fontFamily: 'sans-serif', fontSize: 16, fontWeight: FontWeight.w300);
   }
 
   // Dimensions
@@ -420,21 +417,21 @@ class DefaultSkin extends SettingsSkinDelegate {
     );
   }
 
-  Widget? accessoryWidget(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Widget? accessoryWidget(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     Widget? accessoryWidget;
 
     switch (accessoryType) {
       case AccessoryType.Check:
         accessoryWidget = Icon(
           Icons.check,
-          color: accessoryColor(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo),
+          color: accessoryColor(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo),
         );
         break;
 
       case AccessoryType.Disclosure:
         accessoryWidget = Icon(
           Icons.arrow_forward_ios_rounded,
-          color: accessoryColor(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo),
+          color: accessoryColor(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo),
           size: 14.0,
         );
         break;
@@ -449,14 +446,13 @@ class DefaultSkin extends SettingsSkinDelegate {
         break;
 
       case AccessoryType.None:
-      default:
         break;
     }
 
     return accessoryWidget;
   }
 
-  Widget wrappedLeadingWidget(BuildContext context, {Key? key, Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo, Widget? child}) {
+  Widget wrappedLeadingWidget(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo, Widget? child}) {
     child ??= SizedBox(width: leadingIndent(context), height: leadingIndent(context));
     return Center(key: key, child: Container(color: Colors.transparent, width: leadingIndent(context), height: leadingIndent(context), alignment: Alignment.center, child: child));
   }
@@ -536,39 +532,39 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// Settings Cell Topper
   /// - a widget to appear above of the settings cell (keyline or something)
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [cellIndex] the index number of this cell in its section
   /// - [cellCount] the total number of cells in its section
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget settingsCellTop(BuildContext context, {Key? key, Set<MaterialState>? materialStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo}) {
+  Widget settingsCellTop(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo}) {
     return SizedBox.shrink(key: key);
   }
 
   /// Settings Cell Bottom
   /// - a widget to appear below of the settings cell (keyline or something)
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [cellIndex] the index number of this cell in its section
   /// - [cellCount] the total number of cells in its section
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget settingsCellBottom(BuildContext context, {Key? key, Set<MaterialState>? materialStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo}) {
+  Widget settingsCellBottom(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo}) {
     return (cellIndex < (cellCount - 1)) ? SizedBox.shrink(key: key) : keyline(context, key: key, extraInfo: extraInfo);
   }
 
   /// Setting Cell
   /// This generates the frame of a settings cell, with the contents supplied by the [child] parameter
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   /// - [child] the rendered contents of the cell, possibly generated via one of the ...Content() methods below
   @override
-  Widget settingsCell(BuildContext context, {Key? key, Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo, required Widget child}) {
+  Widget settingsCell(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo, required Widget child}) {
     return Container(
       key: key,
-      color: cellBackgroundColor(context, materialStates: materialStates, extraInfo: extraInfo),
+      color: cellBackgroundColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
       // height: rowHeight(context, extraInfo: extraInfo),
       child: child,
     );
@@ -577,7 +573,7 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// Details Content
   /// This generates the internal contents of a standard details cell with an optional icon/image, title, subtitle, value and accessory
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [title] main text description
   /// - [subtitle] secondary text description
   /// - [value] current value for this setting/cell
@@ -585,8 +581,8 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget detailsContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, String title = '', String subtitle = '', String value = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo}) {
-    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo);
+  Widget detailsContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', String value = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo}) {
+    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
     return Container(
       key: key,
@@ -610,8 +606,8 @@ class DefaultSkin extends SettingsSkinDelegate {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty) Text('$title', style: titleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
-                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (title.isNotEmpty) Text('$title', style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
                 ],
               ),
             ),
@@ -637,7 +633,7 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// Switch Content
   /// This generates the internal contents of a toggle/switch cell with an optional icon/image, title, subtitle, value (used to set the initial value of the switch) and accessory
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [title] main text description
   /// - [subtitle] secondary text description
   /// - [value] current value for this setting/cell
@@ -646,8 +642,8 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// - [onChanged] callback method called when the value of the swich changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget switchContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, String title = '', String subtitle = '', bool value = false, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(bool) onChanged, Map<String, dynamic>? extraInfo}) {
-    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo);
+  Widget switchContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', bool value = false, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(bool) onChanged, Map<String, dynamic>? extraInfo}) {
+    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
     return Container(
       key: key,
@@ -669,9 +665,9 @@ class DefaultSkin extends SettingsSkinDelegate {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty) Text('$title', style: titleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (title.isNotEmpty) Text('$title', style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
                   if (title.isNotEmpty && subtitle.isNotEmpty) verticalPadding(context, extraInfo: extraInfo),
-                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
                 ],
               ),
             ),
@@ -681,12 +677,12 @@ class DefaultSkin extends SettingsSkinDelegate {
             child: Align(
               alignment: AlignmentDirectional.centerEnd,
               child: Switch(
-                activeColor: switchActiveColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                inactiveThumbColor: switchInactiveThumbColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                activeTrackColor: switchActiveTrackColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                inactiveTrackColor: switchInactiveTrackColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                focusColor: switchFocusColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                hoverColor: switchHoverColor(context, materialStates: materialStates, extraInfo: extraInfo),
+                activeColor: switchActiveColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                inactiveThumbColor: switchInactiveThumbColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                activeTrackColor: switchActiveTrackColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                inactiveTrackColor: switchInactiveTrackColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                focusColor: switchFocusColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                hoverColor: switchHoverColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
                 value: value,
                 onChanged: onChanged,
               ),
@@ -703,7 +699,7 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// Slider Content
   /// This generates the internal contents of a slider cell with an optional icon/image, title, subtitle, value (used to set the initial value of the slider) and accessory
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [title] main text description
   /// - [subtitle] secondary text description
   /// - [value] current value for this setting/cell
@@ -712,9 +708,9 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// - [onChanged] callback method called when the value of the slider changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget sliderContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, String title = '', String subtitle = '', double value = 0.0, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(double) onChanged, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo);
+  Widget sliderContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', double value = 0.0, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(double) onChanged, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
     return Container(
       key: key,
@@ -736,43 +732,43 @@ class DefaultSkin extends SettingsSkinDelegate {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('$title', style: titleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  Text('$title', style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
                   if (subtitle.isNotEmpty) verticalPadding(context, extraInfo: extraInfo),
-                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (subtitle.isNotEmpty) Text('$subtitle', style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
                   verticalPadding(context, extraInfo: extraInfo),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
                       trackHeight: sliderTrackHeight(context, extraInfo: extraInfo),
-                      activeTrackColor: sliderActiveTrackColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                      inactiveTrackColor: sliderInactiveTrackColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                      disabledActiveTrackColor: sliderDisabledActiveTrackColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                      disabledInactiveTrackColor: sliderDisabledInactiveTrackColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                      activeTickMarkColor: sliderActiveTickMarkColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                      inactiveTickMarkColor: sliderInactiveTickMarkColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                      disabledActiveTickMarkColor: sliderDisabledActiveTickMarkColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                      disabledInactiveTickMarkColor: sliderDisabledInactiveTickMarkColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                      thumbColor: sliderThumbColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                      overlappingShapeStrokeColor: sliderOverlappingShapeStrokeColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                      disabledThumbColor: sliderDisabledThumbColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                      overlayColor: sliderOverlayColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                      valueIndicatorColor: sliderValueIndicatorColor(context, materialStates: materialStates, extraInfo: extraInfo),
-                      overlayShape: sliderOverlayShape(context, materialStates: materialStates, extraInfo: extraInfo),
-                      tickMarkShape: sliderTickMarkShape(context, materialStates: materialStates, extraInfo: extraInfo),
-                      thumbShape: sliderThumbShape(context, materialStates: materialStates, extraInfo: extraInfo),
-                      trackShape: sliderTrackShape(context, materialStates: materialStates, extraInfo: extraInfo),
-                      valueIndicatorShape: sliderValueIndicatorShape(context, materialStates: materialStates, extraInfo: extraInfo),
-                      rangeTickMarkShape: sliderRangeTickMarkShape(context, materialStates: materialStates, extraInfo: extraInfo),
-                      rangeThumbShape: sliderRangeThumbShape(context, materialStates: materialStates, extraInfo: extraInfo),
-                      rangeTrackShape: sliderRangeTrackShape(context, materialStates: materialStates, extraInfo: extraInfo),
-                      rangeValueIndicatorShape: sliderRangeValueIndicatorShape(context, materialStates: materialStates, extraInfo: extraInfo),
-                      showValueIndicator: sliderShowValueIndicator(context, materialStates: materialStates, extraInfo: extraInfo),
-                      valueIndicatorTextStyle: sliderValueIndicatorTextStyle(context, materialStates: materialStates, extraInfo: extraInfo),
-                      minThumbSeparation: sliderMinThumbSeparation(context, materialStates: materialStates, extraInfo: extraInfo),
-                      thumbSelector: sliderThumbSelector(context, materialStates: materialStates, extraInfo: extraInfo),
+                      activeTrackColor: sliderActiveTrackColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      inactiveTrackColor: sliderInactiveTrackColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      disabledActiveTrackColor: sliderDisabledActiveTrackColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      disabledInactiveTrackColor: sliderDisabledInactiveTrackColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      activeTickMarkColor: sliderActiveTickMarkColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      inactiveTickMarkColor: sliderInactiveTickMarkColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      disabledActiveTickMarkColor: sliderDisabledActiveTickMarkColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      disabledInactiveTickMarkColor: sliderDisabledInactiveTickMarkColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      thumbColor: sliderThumbColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      overlappingShapeStrokeColor: sliderOverlappingShapeStrokeColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      disabledThumbColor: sliderDisabledThumbColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      overlayColor: sliderOverlayColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      valueIndicatorColor: sliderValueIndicatorColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      overlayShape: sliderOverlayShape(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      tickMarkShape: sliderTickMarkShape(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      thumbShape: sliderThumbShape(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      trackShape: sliderTrackShape(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      valueIndicatorShape: sliderValueIndicatorShape(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      rangeTickMarkShape: sliderRangeTickMarkShape(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      rangeThumbShape: sliderRangeThumbShape(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      rangeTrackShape: sliderRangeTrackShape(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      rangeValueIndicatorShape: sliderRangeValueIndicatorShape(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      showValueIndicator: sliderShowValueIndicator(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      valueIndicatorTextStyle: sliderValueIndicatorTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      minThumbSeparation: sliderMinThumbSeparation(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      thumbSelector: sliderThumbSelector(context, widgetStates: widgetStates, extraInfo: extraInfo),
                     ),
                     child: Slider(
                       value: value,
-                      onChanged: materialStates.isDisabled ? null : onChanged,
+                      onChanged: widgetStates.isDisabled ? null : onChanged,
                     ),
                   ),
                 ],
@@ -791,7 +787,7 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// This generates the internal contents of a button cell with an optional icon/image, title, subtitle, and accessory
   /// Note: the callback to handle the button press is handled in the main settings cell, so it isn't passed down to this content method
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [type] a button type (Normal, Cancel, Destructive, or Custom)
   /// - [title] main text description
   /// - [subtitle] secondary text description
@@ -799,12 +795,12 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget buttonContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, ButtonType type = ButtonType.Normal, String title = '', String subtitle = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, materialStates: materialStates, extraInfo: extraInfo);
+  Widget buttonContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, ButtonType type = ButtonType.Normal, String title = '', String subtitle = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
-    var titleTextStyle = this.titleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo);
-    var subtitleTextStyle = this.subtitleTextStyle(context, materialStates: materialStates, extraInfo: extraInfo);
+    var titleTextStyle = this.titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo);
+    var subtitleTextStyle = this.subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo);
     var textColor = Colors.transparent;
     switch (type) {
       case ButtonType.Normal:
@@ -820,7 +816,7 @@ class DefaultSkin extends SettingsSkinDelegate {
         break;
     }
 
-    if (materialStates.isDisabled) {
+    if (widgetStates.isDisabled) {
       titleTextStyle = titleTextStyle.copyWith(color: textColor.withAlpha(100));
     } else {
       titleTextStyle = titleTextStyle.copyWith(color: textColor);

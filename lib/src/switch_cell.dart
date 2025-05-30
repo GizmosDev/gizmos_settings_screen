@@ -8,7 +8,6 @@
 
 library;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -40,15 +39,15 @@ class SwitchSettingsCell extends SettingsCell {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [onChanged] callback method called when the value of the swich changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  SwitchSettingsCell({Key? key, Set<MaterialState>? initialStates, this.title = '', this.subtitle = '', this.value = false, this.leadingWidget, this.accessoryType = AccessoryType.None, VoidCallback? onPressed, required this.onChanged, Map<String, dynamic>? extraInfo})
+  SwitchSettingsCell({Key? key, Set<WidgetState>? initialStates, this.title = '', this.subtitle = '', this.value = false, this.leadingWidget, this.accessoryType = AccessoryType.None, VoidCallback? onPressed, required this.onChanged, Map<String, dynamic>? extraInfo})
       : super(key: key, initialStates: initialStates, onPressed: onPressed, extraInfo: extraInfo);
 
   /// buildContents() is called by the parent's state build() method
-  /// - treat this like the build() call of a normal [StatelessWidget], but with the additional [materialStates] object that can be used for customization
+  /// - treat this like the build() call of a normal [StatelessWidget], but with the additional [widgetStates] object that can be used for customization
   @override
-  Widget buildContents(BuildContext context, {Set<MaterialState>? materialStates}) {
-    materialStates ??= <MaterialState>{};
+  Widget buildContents(BuildContext context, {Set<WidgetState>? widgetStates}) {
+    widgetStates ??= <WidgetState>{};
     var skinDelegate = SettingsSkin.of(context)?.delegate ?? DefaultSkin();
-    return skinDelegate.switchContent(context, materialStates: materialStates, title: title, subtitle: subtitle, value: value, leadingWidget: leadingWidget, accessoryType: accessoryType, onChanged: onChanged, extraInfo: extraInfo);
+    return skinDelegate.switchContent(context, widgetStates: widgetStates, title: title, subtitle: subtitle, value: value, leadingWidget: leadingWidget, accessoryType: accessoryType, onChanged: onChanged, extraInfo: extraInfo);
   }
 }

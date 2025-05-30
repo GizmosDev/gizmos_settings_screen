@@ -8,9 +8,7 @@
 
 library;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../enums/accessory_type.dart';
 import '../extensions/color.dart';
@@ -27,9 +25,9 @@ class CupertinoDarkSettingsSkin extends CupertinoSettingsSkin {
   // - Colours
   // - - tints
   @override
-  Color primaryColor({Set<MaterialState>? materialStates}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('#0b84fe').withAlpha(materialStates.isDisabled ? 100 : 255);
+  Color primaryColor({Set<WidgetState>? widgetStates}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#0b84fe').withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
   // - - backgrounds
@@ -59,16 +57,16 @@ class CupertinoDarkSettingsSkin extends CupertinoSettingsSkin {
   }
 
   @override
-  Color cellBackgroundColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
+  Color cellBackgroundColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
 
-    if (materialStates.isPressed) {
+    if (widgetStates.isPressed) {
       return HexColor.fromHex('#3a3a3c');
-    } else if (materialStates.isHovering || materialStates.isFocused) {
+    } else if (widgetStates.isHovering || widgetStates.isFocused) {
       return primaryColor().withAlpha(50);
-    } else if (materialStates.isSelected) {
+    } else if (widgetStates.isSelected) {
       return primaryColor().withAlpha(100);
-    } else if (materialStates.isDisabled) {
+    } else if (widgetStates.isDisabled) {
       return Colors.grey[900] ?? Colors.grey;
     } else {
       // isNormal
@@ -93,16 +91,16 @@ class CupertinoDarkSettingsSkin extends CupertinoSettingsSkin {
   }
 
   @override
-  Color titleTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
+  Color titleTextColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
 
-    if (materialStates.isPressed) {
+    if (widgetStates.isPressed) {
       return Colors.white;
-    } else if (materialStates.isHovering || materialStates.isFocused) {
+    } else if (widgetStates.isHovering || widgetStates.isFocused) {
       return Colors.white.withAlpha(100);
-    } else if (materialStates.isSelected) {
+    } else if (widgetStates.isSelected) {
       return Colors.white.withAlpha(200);
-    } else if (materialStates.isDisabled) {
+    } else if (widgetStates.isDisabled) {
       return Colors.white;
     } else {
       // isNormal
@@ -111,37 +109,49 @@ class CupertinoDarkSettingsSkin extends CupertinoSettingsSkin {
   }
 
   @override
-  Color subtitleTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    return titleTextColor(context, materialStates: materialStates, extraInfo: extraInfo);
+  Color subtitleTextColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    return titleTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo);
   }
 
   @override
-  Color valueTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    return materialStates.isPressed ? HexColor.fromHex('#6e6e72') : HexColor.fromHex('#5a5a5f');
+  Color valueTextColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return widgetStates.isPressed ? HexColor.fromHex('#6e6e72') : HexColor.fromHex('#5a5a5f');
   }
 
   // - - Switch
   @override
-  Color? switchActiveColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('#35c759').withAlpha(materialStates.isDisabled ? 100 : 255);
+  Color? switchActiveColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#ffffff').withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
   @override
-  Color? switchTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('#39393d').withAlpha(materialStates.isDisabled ? 100 : 255);
+  Color? switchActiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#35c759').withAlpha(widgetStates.isDisabled ? 100 : 255);
+  }
+
+  @override
+  Color? switchInactiveThumbColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#ffffff').withAlpha(widgetStates.isDisabled ? 100 : 255);
+  }
+
+  @override
+  Color? switchInactiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#333333').withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
   // - - Slider
   @override
-  Color? sliderActiveColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    return primaryColor(materialStates: materialStates);
+  Color? sliderActiveColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    return primaryColor(widgetStates: widgetStates);
   }
 
   @override
-  Color? sliderThumbColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderThumbColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     return Colors.white;
   }
 
@@ -152,21 +162,20 @@ class CupertinoDarkSettingsSkin extends CupertinoSettingsSkin {
   }
 
   @override
-  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
+  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
 
     switch (accessoryType) {
       case AccessoryType.Check:
-        return primaryColor(materialStates: materialStates);
+        return primaryColor(widgetStates: widgetStates);
 
       case AccessoryType.Disclosure:
-        return materialStates.isPressed ? HexColor.fromHex('#6e6e72') : HexColor.fromHex('#5a5a5f');
+        return widgetStates.isPressed ? HexColor.fromHex('#6e6e72') : HexColor.fromHex('#5a5a5f');
 
       case AccessoryType.Custom:
-        return primaryColor(materialStates: materialStates);
+        return primaryColor(widgetStates: widgetStates);
 
       case AccessoryType.None:
-      default:
         return Colors.transparent;
     }
   }

@@ -10,53 +10,53 @@ library;
 
 import 'package:flutter/material.dart';
 
-/// Helpful extentions on [Set<MaterialState>]
-extension MaterialStateSetAdditions on Set<MaterialState> {
-  /// Whether or not the set of [MaterialState]'s includes [MaterialState.pressed]
-  bool get isPressed => contains(MaterialState.pressed);
+/// Helpful extentions on [Set<WidgetState>]
+extension WidgetStateSetAdditions on Set<WidgetState> {
+  /// Whether or not the set of [WidgetState]'s includes [WidgetState.pressed]
+  bool get isPressed => contains(WidgetState.pressed);
 
-  /// Whether or not the set of [MaterialState]'s includes [MaterialState.hovered]
-  bool get isHovering => contains(MaterialState.hovered);
+  /// Whether or not the set of [WidgetState]'s includes [WidgetState.hovered]
+  bool get isHovering => contains(WidgetState.hovered);
 
-  /// Whether or not the set of [MaterialState]'s includes [MaterialState.focused]
-  bool get isFocused => contains(MaterialState.focused);
+  /// Whether or not the set of [WidgetState]'s includes [WidgetState.focused]
+  bool get isFocused => contains(WidgetState.focused);
 
-  /// Whether or not the set of [MaterialState]'s includes [MaterialState.selected]
-  bool get isSelected => contains(MaterialState.selected);
+  /// Whether or not the set of [WidgetState]'s includes [WidgetState.selected]
+  bool get isSelected => contains(WidgetState.selected);
 
-  /// Whether or not the set of [MaterialState]'s includes [MaterialState.disabled]
-  bool get isDisabled => contains(MaterialState.disabled);
+  /// Whether or not the set of [WidgetState]'s includes [WidgetState.disabled]
+  bool get isDisabled => contains(WidgetState.disabled);
 
-  /// Add [MaterialState.pressed] to the set
-  Set<MaterialState> pressed() {
-    add(MaterialState.pressed);
+  /// Add [WidgetState.pressed] to the set
+  Set<WidgetState> pressed() {
+    add(WidgetState.pressed);
     return this;
   }
 
-  /// Add [MaterialState.pressed] to the set
-  Set<MaterialState> highlighted() => pressed();
+  /// Add [WidgetState.pressed] to the set
+  Set<WidgetState> highlighted() => pressed();
 
-  /// Add [MaterialState.selected] to the set
-  Set<MaterialState> selected() {
-    add(MaterialState.selected);
+  /// Add [WidgetState.selected] to the set
+  Set<WidgetState> selected() {
+    add(WidgetState.selected);
     return this;
   }
 
-  /// Add [MaterialState.disabled] to the set
-  Set<MaterialState> disabled() {
-    add(MaterialState.disabled);
+  /// Add [WidgetState.disabled] to the set
+  Set<WidgetState> disabled() {
+    add(WidgetState.disabled);
     return this;
   }
 
-  /// Add [MaterialState.hovered] to the set
-  Set<MaterialState> hovered() {
-    add(MaterialState.hovered);
+  /// Add [WidgetState.hovered] to the set
+  Set<WidgetState> hovered() {
+    add(WidgetState.hovered);
     return this;
   }
 
-  /// Add [MaterialState.focused] to the set
-  Set<MaterialState> focused() {
-    add(MaterialState.focused);
+  /// Add [WidgetState.focused] to the set
+  Set<WidgetState> focused() {
+    add(WidgetState.focused);
     return this;
   }
 }

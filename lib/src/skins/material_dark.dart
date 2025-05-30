@@ -8,9 +8,7 @@
 
 library;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../enums/accessory_type.dart';
 import '../extensions/color.dart';
@@ -27,9 +25,9 @@ class MaterialDarkSettingsSkin extends MaterialSettingsSkin {
   // - Colours
   // - - tints
   @override
-  Color primaryColor({Set<MaterialState>? materialStates}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('#0075f0').withAlpha(materialStates.isDisabled ? 100 : 255);
+  Color primaryColor({Set<WidgetState>? widgetStates}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#0075f0').withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
   // - - backgrounds
@@ -59,16 +57,16 @@ class MaterialDarkSettingsSkin extends MaterialSettingsSkin {
   }
 
   @override
-  Color cellBackgroundColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
+  Color cellBackgroundColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
 
-    if (materialStates.isPressed) {
+    if (widgetStates.isPressed) {
       return HexColor.fromHex('#1a1a1a');
-    } else if (materialStates.isHovering || materialStates.isFocused) {
+    } else if (widgetStates.isHovering || widgetStates.isFocused) {
       return primaryColor().withAlpha(50);
-    } else if (materialStates.isSelected) {
+    } else if (widgetStates.isSelected) {
       return primaryColor().withAlpha(100);
-    } else if (materialStates.isDisabled) {
+    } else if (widgetStates.isDisabled) {
       return Colors.grey[900] ?? Colors.grey;
     } else {
       // isNormal
@@ -93,16 +91,16 @@ class MaterialDarkSettingsSkin extends MaterialSettingsSkin {
   }
 
   @override
-  Color titleTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
+  Color titleTextColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
 
-    if (materialStates.isPressed) {
+    if (widgetStates.isPressed) {
       return Colors.grey[500] ?? Colors.grey;
-    } else if (materialStates.isHovering || materialStates.isFocused) {
+    } else if (widgetStates.isHovering || widgetStates.isFocused) {
       return (Colors.grey[900] ?? Colors.grey).withAlpha(100);
-    } else if (materialStates.isSelected) {
+    } else if (widgetStates.isSelected) {
       return (Colors.grey[900] ?? Colors.grey).withAlpha(200);
-    } else if (materialStates.isDisabled) {
+    } else if (widgetStates.isDisabled) {
       return Colors.grey;
     } else {
       // isNormal
@@ -111,16 +109,16 @@ class MaterialDarkSettingsSkin extends MaterialSettingsSkin {
   }
 
   @override
-  Color subtitleTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
+  Color subtitleTextColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
 
-    if (materialStates.isPressed) {
+    if (widgetStates.isPressed) {
       return Colors.white;
-    } else if (materialStates.isHovering || materialStates.isFocused) {
+    } else if (widgetStates.isHovering || widgetStates.isFocused) {
       return Colors.white.withAlpha(100);
-    } else if (materialStates.isSelected) {
+    } else if (widgetStates.isSelected) {
       return (Colors.grey[900] ?? Colors.grey).withAlpha(200);
-    } else if (materialStates.isDisabled) {
+    } else if (widgetStates.isDisabled) {
       return Colors.grey;
     } else {
       // isNormal
@@ -129,116 +127,116 @@ class MaterialDarkSettingsSkin extends MaterialSettingsSkin {
   }
 
   @override
-  Color valueTextColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color valueTextColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     return HexColor.fromHex('#929295');
   }
 
   // - - Switch
   @override
-  Color? switchActiveColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('#7bb1f9').withAlpha(materialStates.isDisabled ? 100 : 255);
+  Color? switchActiveColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#7bb1f9').withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
   @override
-  Color? switchActiveTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('#27364d').withAlpha(materialStates.isDisabled ? 100 : 255);
+  Color? switchActiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#27364d').withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
   @override
-  Color? switchInactiveThumbColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('b9b9b9').withAlpha(materialStates.isDisabled ? 100 : 255);
+  Color? switchInactiveThumbColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('b9b9b9').withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
   @override
-  Color? switchInactiveTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
-    return HexColor.fromHex('#4d4d4d').withAlpha(materialStates.isDisabled ? 100 : 255);
+  Color? switchInactiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
+    return HexColor.fromHex('#4d4d4d').withAlpha(widgetStates.isDisabled ? 100 : 255);
   }
 
   @override
-  Color? switchFocusColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    return switchActiveColor(context, materialStates: materialStates, extraInfo: extraInfo)?.withAlpha(50);
+  Color? switchFocusColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    return switchActiveColor(context, widgetStates: widgetStates, extraInfo: extraInfo)?.withAlpha(50);
   }
 
   @override
-  Color? switchHoverColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    return switchActiveColor(context, materialStates: materialStates, extraInfo: extraInfo)?.withAlpha(50);
+  Color? switchHoverColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    return switchActiveColor(context, widgetStates: widgetStates, extraInfo: extraInfo)?.withAlpha(50);
   }
 
   // - - Slider
   @override
-  Color? sliderActiveTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderActiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     return HexColor.fromHex('#7bb1f9');
   }
 
   @override
-  Color? sliderInactiveTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderInactiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     return HexColor.fromHex('#4d4d4d');
   }
 
   @override
-  Color? sliderDisabledActiveTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderDisabledActiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.disabledActiveTrackColor;
   }
 
   @override
-  Color? sliderDisabledInactiveTrackColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderDisabledInactiveTrackColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.disabledInactiveTrackColor;
   }
 
   @override
-  Color? sliderActiveTickMarkColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderActiveTickMarkColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.activeTickMarkColor;
   }
 
   @override
-  Color? sliderInactiveTickMarkColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderInactiveTickMarkColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.inactiveTickMarkColor;
   }
 
   @override
-  Color? sliderDisabledActiveTickMarkColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderDisabledActiveTickMarkColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.disabledActiveTickMarkColor;
   }
 
   @override
-  Color? sliderDisabledInactiveTickMarkColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderDisabledInactiveTickMarkColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.disabledInactiveTickMarkColor;
   }
 
   @override
-  Color? sliderThumbColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderThumbColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     return HexColor.fromHex('#7bb1f9');
   }
 
   @override
-  Color? sliderOverlappingShapeStrokeColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderOverlappingShapeStrokeColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.overlappingShapeStrokeColor;
   }
 
   @override
-  Color? sliderDisabledThumbColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderDisabledThumbColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     return HexColor.fromHex('#4d4d4d');
   }
 
   @override
-  Color? sliderOverlayColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderOverlayColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.overlayColor;
   }
 
   @override
-  Color? sliderValueIndicatorColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
+  Color? sliderValueIndicatorColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
     var slideThemeData = SliderTheme.of(context);
     return slideThemeData.valueIndicatorColor;
   }
@@ -250,21 +248,20 @@ class MaterialDarkSettingsSkin extends MaterialSettingsSkin {
   }
 
   @override
-  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo}) {
-    materialStates ??= <MaterialState>{};
+  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.None, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+    widgetStates ??= <WidgetState>{};
 
     switch (accessoryType) {
       case AccessoryType.Check:
-        return primaryColor(materialStates: materialStates);
+        return primaryColor(widgetStates: widgetStates);
 
       case AccessoryType.Disclosure:
-        return materialStates.isPressed ? HexColor.fromHex('#a4a4aa') : HexColor.fromHex('#c4c4c7');
+        return widgetStates.isPressed ? HexColor.fromHex('#a4a4aa') : HexColor.fromHex('#c4c4c7');
 
       case AccessoryType.Custom:
-        return primaryColor(materialStates: materialStates);
+        return primaryColor(widgetStates: widgetStates);
 
       case AccessoryType.None:
-      default:
         return Colors.transparent;
     }
   }

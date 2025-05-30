@@ -8,7 +8,6 @@
 
 library;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -48,7 +47,7 @@ abstract class SettingsSkinDelegate {
   // Customization Methods
   // - Colours
   // - - basic
-  Color primaryColor({Set<MaterialState>? materialStates});
+  Color primaryColor({Set<WidgetState>? widgetStates});
 
   // - - backgrounds
   Color appHeaderBackgroundColor(BuildContext context);
@@ -61,7 +60,7 @@ abstract class SettingsSkinDelegate {
 
   Color footerBackgroundColor(BuildContext context, {Map<String, dynamic>? extraInfo});
 
-  Color cellBackgroundColor(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo});
+  Color cellBackgroundColor(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo});
 
   // Text Styles
   // - app header
@@ -74,12 +73,12 @@ abstract class SettingsSkinDelegate {
   TextStyle footerTextStyle(BuildContext context, {Map<String, dynamic>? extraInfo});
 
   // - title
-  TextStyle titleTextStyle(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo});
+  TextStyle titleTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo});
 
-  TextStyle subtitleTextStyle(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo});
+  TextStyle subtitleTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo});
 
   // - value
-  TextStyle valueTextStyle(BuildContext context, {Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo});
+  TextStyle valueTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo});
 
   // Options
   ScrollPhysics defaultScrollPhysics(BuildContext context);
@@ -99,45 +98,45 @@ abstract class SettingsSkinDelegate {
   /// Settings Cell Topper
   /// - a widget to appear above of the settings cell (keyline or something)
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [cellIndex] the index number of this cell in its section
   /// - [cellCount] the total number of cells in its section
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  Widget settingsCellTop(BuildContext context, {Key? key, Set<MaterialState>? materialStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo});
+  Widget settingsCellTop(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo});
 
   /// Settings Cell Bottom
   /// - a widget to appear below of the settings cell (keyline or something)
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [cellIndex] the index number of this cell in its section
   /// - [cellCount] the total number of cells in its section
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  Widget settingsCellBottom(BuildContext context, {Key? key, Set<MaterialState>? materialStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo});
+  Widget settingsCellBottom(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo});
 
   /// Setting Cell
   /// This generates the frame of a settings cell, with the contents supplied by the [child] parameter
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   /// - [child] the rendered contents of the cell, possibly generated via one of the ...Content() methods below
-  Widget settingsCell(BuildContext context, {Key? key, Set<MaterialState>? materialStates, Map<String, dynamic>? extraInfo, required Widget child});
+  Widget settingsCell(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo, required Widget child});
 
   /// Details Content
   /// This generates the internal contents of a standard details cell with an optional icon/image, title, subtitle, value and accessory
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [title] main text description
   /// - [subtitle] secondary text description
   /// - [value] current value for this setting/cell
   /// - [leadingWidget] an optional leading image/icon
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  Widget detailsContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, String title = '', String subtitle = '', String value = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo});
+  Widget detailsContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', String value = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo});
 
   /// Switch Content
   /// This generates the internal contents of a toggle/switch cell with an optional icon/image, title, subtitle, value (used to set the initial value of the switch) and accessory
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [title] main text description
   /// - [subtitle] secondary text description
   /// - [value] current value for this setting/cell
@@ -145,12 +144,12 @@ abstract class SettingsSkinDelegate {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [onChanged] callback method called when the value of the swich changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  Widget switchContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, String title = '', String subtitle = '', bool value = false, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(bool) onChanged, Map<String, dynamic>? extraInfo});
+  Widget switchContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', bool value = false, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(bool) onChanged, Map<String, dynamic>? extraInfo});
 
   /// Slider Content
   /// This generates the internal contents of a slider cell with an optional icon/image, title, subtitle, value (used to set the initial value of the slider) and accessory
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [title] main text description
   /// - [subtitle] secondary text description
   /// - [value] current value for this setting/cell
@@ -158,18 +157,18 @@ abstract class SettingsSkinDelegate {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [onChanged] callback method called when the value of the slider changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  Widget sliderContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, String title = '', String subtitle = '', double value = 0.0, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(double) onChanged, Map<String, dynamic>? extraInfo});
+  Widget sliderContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', double value = 0.0, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, required Function(double) onChanged, Map<String, dynamic>? extraInfo});
 
   /// Button Content
   /// This generates the internal contents of a button cell with an optional icon/image, title, subtitle, and accessory
   /// Note: the callback to handle the button press is handled in the main settings cell, so it isn't passed down to this content method
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [type] a button type (Normal, Cancel, Destructive, or Custom)
   /// - [title] main text description
   /// - [subtitle] secondary text description
   /// - [leadingWidget] an optional leading image/icon
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  Widget buttonContent(BuildContext context, {Key? key, Set<MaterialState>? materialStates, ButtonType type = ButtonType.Normal, String title = '', String subtitle = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo});
+  Widget buttonContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, ButtonType type = ButtonType.Normal, String title = '', String subtitle = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.None, Map<String, dynamic>? extraInfo});
 }

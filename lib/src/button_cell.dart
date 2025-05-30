@@ -8,7 +8,6 @@
 
 library;
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -33,7 +32,7 @@ class ButtonSettingsCell extends SettingsCell {
   /// Button Settings Cell
   /// This generates a button cell with an optional icon/image, title, subtitle, and accessory
   /// - [context] the current BuildContext
-  /// - [materialStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
+  /// - [widgetStates] a set of the current states this cell is in (pressed, selected, disabled, etc)
   /// - [type] a button type (Normal, Cancel, Destructive, or Custom)
   /// - [title] main text description
   /// - [subtitle] secondary text description
@@ -41,15 +40,15 @@ class ButtonSettingsCell extends SettingsCell {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [onPressed] the function to call when the button is pressed
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  ButtonSettingsCell({Key? key, Set<MaterialState>? initialStates, this.type = ButtonType.Normal, this.title = '', this.subtitle = '', this.leadingWidget, this.accessoryType = AccessoryType.None, VoidCallback? onPressed, Map<String, dynamic>? extraInfo})
+  ButtonSettingsCell({Key? key, Set<WidgetState>? initialStates, this.type = ButtonType.Normal, this.title = '', this.subtitle = '', this.leadingWidget, this.accessoryType = AccessoryType.None, VoidCallback? onPressed, Map<String, dynamic>? extraInfo})
       : super(key: key, initialStates: initialStates, onPressed: onPressed, extraInfo: extraInfo);
 
   /// buildContents() is called by the parent's state build() method
-  /// - treat this like the build() call of a normal [StatelessWidget], but with the additional [materialStates] object that can be used for customization
+  /// - treat this like the build() call of a normal [StatelessWidget], but with the additional [widgetStates] object that can be used for customization
   @override
-  Widget buildContents(BuildContext context, {Key? key, Set<MaterialState>? materialStates}) {
-    materialStates ??= <MaterialState>{};
+  Widget buildContents(BuildContext context, {Key? key, Set<WidgetState>? widgetStates}) {
+    widgetStates ??= <WidgetState>{};
     var skinDelegate = SettingsSkin.of(context)?.delegate ?? DefaultSkin();
-    return skinDelegate.buttonContent(context, key: key, type: type, materialStates: materialStates, title: title, subtitle: subtitle, leadingWidget: leadingWidget, accessoryType: accessoryType, extraInfo: extraInfo);
+    return skinDelegate.buttonContent(context, key: key, type: type, widgetStates: widgetStates, title: title, subtitle: subtitle, leadingWidget: leadingWidget, accessoryType: accessoryType, extraInfo: extraInfo);
   }
 }
