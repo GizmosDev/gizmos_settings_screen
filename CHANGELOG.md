@@ -34,3 +34,14 @@
 ### Additions:
 
 #### Extensions:
+
+
+## 0.4.0 - 2025/05/30
+
+### Notes:
+  * Static analyis updates/clean up
+  * [Breaking] Changed enum members to be lowerCamelCase (see: https://dart.dev/tools/linter-rules/constant_identifier_names)
+
+### Additions:
+
+#### Extensions:

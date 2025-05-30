@@ -8,7 +8,7 @@ homepage: https://gizmos.dev/
 repository: https://github.com/GizmosDev/gizmos_settings_screen
 issue_tracker: https://github.com/GizmosDev/gizmos_settings_screen/issues
 
-version: 0.3.0
+version: 0.4.0
 
 environment:
   sdk: ">=3.6.0 <4.0.0"
