@@ -10,19 +10,20 @@ issue_tracker: https://github.com/GizmosDev/gizmos_settings_screen/issues
 version: 0.1.0-nullsafety.2
 
 environment:
-  sdk: ">=2.12.0 <3.0.0"
-  flutter: ">=2.0.0"
+  sdk: ">=3.6.0 <4.0.0"
+  flutter: ">=3.27.0"
 
 dependencies:
   flutter:
     sdk: flutter
-
-  # Stricter than Effective Dart
-  pedantic: ^1.11.0
 
 dev_dependencies:
   # Testing
   flutter_test:
     sdk: flutter
 
+  # Linting
+  flutter_lints: ^6.0.0
+
 flutter:
+  generate: true
