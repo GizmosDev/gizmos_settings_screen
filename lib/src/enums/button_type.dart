@@ -6,7 +6,7 @@
 //  Use of this source code is governed by a BSD-style license that can be found in the LICENSE file.
 //
 
-library gizmos_settings_screen;
+library;
 
 /// ButtonType
 /// the type of button so a common UI can be applied, letting the user know what to expect when they press the button
