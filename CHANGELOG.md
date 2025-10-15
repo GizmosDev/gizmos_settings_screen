@@ -45,3 +45,14 @@
 ### Additions:
 
 #### Extensions:
+
+
+## 0.5.0 - 2025/10/15
+
+### Notes:
+  * Bumped dependencies
+  * Bumped sdk requirements to `>=3.8.0 <4.0.0`
+
+### Additions:
+
+#### Extensions:
