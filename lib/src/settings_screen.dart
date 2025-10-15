@@ -40,12 +40,13 @@ class SettingsScreen extends StatelessWidget {
     return Container(
       color: skinDelegate.listBackgroundColor(context),
       child: ListView.builder(
-          itemCount: sections.length,
-          shrinkWrap: shrinkWrap,
-          physics: physics ?? skinDelegate.defaultScrollPhysics(context),
-          itemBuilder: (BuildContext context, int index) {
-            return skinDelegate.section(context, sections[index]);
-          }),
+        itemCount: sections.length,
+        shrinkWrap: shrinkWrap,
+        physics: physics ?? skinDelegate.defaultScrollPhysics(context),
+        itemBuilder: (BuildContext context, int index) {
+          return skinDelegate.section(context, sections[index]);
+        },
+      ),
     );
   }
 }

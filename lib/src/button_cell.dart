@@ -40,7 +40,17 @@ class ButtonSettingsCell extends SettingsCell {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [onPressed] the function to call when the button is pressed
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  ButtonSettingsCell({super.key, super.initialStates, this.type = ButtonType.normal, this.title = '', this.subtitle = '', this.leadingWidget, this.accessoryType = AccessoryType.none, super.onPressed, super.extraInfo});
+  ButtonSettingsCell({
+    super.key,
+    super.initialStates,
+    this.type = ButtonType.normal,
+    this.title = '',
+    this.subtitle = '',
+    this.leadingWidget,
+    this.accessoryType = AccessoryType.none,
+    super.onPressed,
+    super.extraInfo,
+  });
 
   /// buildContents() is called by the parent's state build() method
   /// - treat this like the build() call of a normal [StatelessWidget], but with the additional [widgetStates] object that can be used for customization
@@ -48,6 +58,16 @@ class ButtonSettingsCell extends SettingsCell {
   Widget buildContents(BuildContext context, {Key? key, Set<WidgetState>? widgetStates}) {
     widgetStates ??= <WidgetState>{};
     var skinDelegate = SettingsSkin.of(context)?.delegate ?? DefaultSkin();
-    return skinDelegate.buttonContent(context, key: key, type: type, widgetStates: widgetStates, title: title, subtitle: subtitle, leadingWidget: leadingWidget, accessoryType: accessoryType, extraInfo: extraInfo);
+    return skinDelegate.buttonContent(
+      context,
+      key: key,
+      type: type,
+      widgetStates: widgetStates,
+      title: title,
+      subtitle: subtitle,
+      leadingWidget: leadingWidget,
+      accessoryType: accessoryType,
+      extraInfo: extraInfo,
+    );
   }
 }

@@ -129,7 +129,12 @@ class SettingsCellState<T extends SettingsCell> extends State<T> {
           if (isDisabled || !hasAction) return;
           _handleHighlightChanged(false);
         },
-        child: skinDelegate.settingsCell(context, widgetStates: _widgetStates, extraInfo: widget.extraInfo, child: widget.buildContents(context, widgetStates: _widgetStates)),
+        child: skinDelegate.settingsCell(
+          context,
+          widgetStates: _widgetStates,
+          extraInfo: widget.extraInfo,
+          child: widget.buildContents(context, widgetStates: _widgetStates),
+        ),
       ),
     );
   }

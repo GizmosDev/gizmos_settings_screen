@@ -39,7 +39,18 @@ class SwitchSettingsCell extends SettingsCell {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [onChanged] callback method called when the value of the swich changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  SwitchSettingsCell({super.key, super.initialStates, this.title = '', this.subtitle = '', this.value = false, this.leadingWidget, this.accessoryType = AccessoryType.none, super.onPressed, required this.onChanged, super.extraInfo});
+  SwitchSettingsCell({
+    super.key,
+    super.initialStates,
+    this.title = '',
+    this.subtitle = '',
+    this.value = false,
+    this.leadingWidget,
+    this.accessoryType = AccessoryType.none,
+    super.onPressed,
+    required this.onChanged,
+    super.extraInfo,
+  });
 
   /// buildContents() is called by the parent's state build() method
   /// - treat this like the build() call of a normal [StatelessWidget], but with the additional [widgetStates] object that can be used for customization
@@ -47,6 +58,16 @@ class SwitchSettingsCell extends SettingsCell {
   Widget buildContents(BuildContext context, {Set<WidgetState>? widgetStates}) {
     widgetStates ??= <WidgetState>{};
     var skinDelegate = SettingsSkin.of(context)?.delegate ?? DefaultSkin();
-    return skinDelegate.switchContent(context, widgetStates: widgetStates, title: title, subtitle: subtitle, value: value, leadingWidget: leadingWidget, accessoryType: accessoryType, onChanged: onChanged, extraInfo: extraInfo);
+    return skinDelegate.switchContent(
+      context,
+      widgetStates: widgetStates,
+      title: title,
+      subtitle: subtitle,
+      value: value,
+      leadingWidget: leadingWidget,
+      accessoryType: accessoryType,
+      onChanged: onChanged,
+      extraInfo: extraInfo,
+    );
   }
 }

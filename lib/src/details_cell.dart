@@ -38,7 +38,17 @@ class DetailsSettingsCell extends SettingsCell {
   /// - [leadingWidget] an optional leading image/icon
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
-  DetailsSettingsCell({super.key, super.initialStates, this.title = '', this.subtitle = '', this.value = '', this.leadingWidget, this.accessoryType = AccessoryType.none, super.onPressed, super.extraInfo});
+  DetailsSettingsCell({
+    super.key,
+    super.initialStates,
+    this.title = '',
+    this.subtitle = '',
+    this.value = '',
+    this.leadingWidget,
+    this.accessoryType = AccessoryType.none,
+    super.onPressed,
+    super.extraInfo,
+  });
 
   /// buildContents() is called by the parent's state build() method
   /// - treat this like the build() call of a normal [StatelessWidget], but with the additional [widgetStates] object that can be used for customization
@@ -46,6 +56,16 @@ class DetailsSettingsCell extends SettingsCell {
   Widget buildContents(BuildContext context, {Key? key, Set<WidgetState>? widgetStates}) {
     widgetStates ??= <WidgetState>{};
     var skinDelegate = SettingsSkin.of(context)?.delegate ?? DefaultSkin();
-    return skinDelegate.detailsContent(context, key: key, widgetStates: widgetStates, title: title, subtitle: subtitle, value: value, leadingWidget: leadingWidget, accessoryType: accessoryType, extraInfo: extraInfo);
+    return skinDelegate.detailsContent(
+      context,
+      key: key,
+      widgetStates: widgetStates,
+      title: title,
+      subtitle: subtitle,
+      value: value,
+      leadingWidget: leadingWidget,
+      accessoryType: accessoryType,
+      extraInfo: extraInfo,
+    );
   }
 }

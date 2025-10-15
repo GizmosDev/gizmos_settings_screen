@@ -163,7 +163,12 @@ class CupertinoSettingsSkin extends DefaultSkin {
   }
 
   @override
-  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.none, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+  Color accessoryColor(
+    BuildContext context, {
+    AccessoryType accessoryType = AccessoryType.none,
+    Set<WidgetState>? widgetStates,
+    Map<String, dynamic>? extraInfo,
+  }) {
     widgetStates ??= <WidgetState>{};
 
     switch (accessoryType) {
@@ -191,30 +196,55 @@ class CupertinoSettingsSkin extends DefaultSkin {
   // - header
   @override
   TextStyle headerTextStyle(BuildContext context, {Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: headerTextColor(context, extraInfo: extraInfo), fontFamily: 'Helvetica Neue', fontSize: 13, fontWeight: FontWeight.w400);
+    return TextStyle(
+      color: headerTextColor(context, extraInfo: extraInfo),
+      fontFamily: 'Helvetica Neue',
+      fontSize: 13,
+      fontWeight: FontWeight.w400,
+    );
   }
 
   // - footer
   @override
   TextStyle footerTextStyle(BuildContext context, {Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: footerTextColor(context, extraInfo: extraInfo), fontFamily: 'Helvetica Neue', fontSize: 13, fontWeight: FontWeight.w400);
+    return TextStyle(
+      color: footerTextColor(context, extraInfo: extraInfo),
+      fontFamily: 'Helvetica Neue',
+      fontSize: 13,
+      fontWeight: FontWeight.w400,
+    );
   }
 
   // - title
   @override
   TextStyle titleTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: titleTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo), fontFamily: 'Helvetica Neue', fontSize: 17, fontWeight: FontWeight.w400);
+    return TextStyle(
+      color: titleTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+      fontFamily: 'Helvetica Neue',
+      fontSize: 17,
+      fontWeight: FontWeight.w400,
+    );
   }
 
   @override
   TextStyle subtitleTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: subtitleTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo), fontFamily: 'Helvetica Neue', fontSize: 12, fontWeight: FontWeight.w300);
+    return TextStyle(
+      color: subtitleTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+      fontFamily: 'Helvetica Neue',
+      fontSize: 12,
+      fontWeight: FontWeight.w300,
+    );
   }
 
   // - value
   @override
   TextStyle valueTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: valueTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo), fontFamily: 'Helvetica Neue', fontSize: 16, fontWeight: FontWeight.w400);
+    return TextStyle(
+      color: valueTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+      fontFamily: 'Helvetica Neue',
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+    );
   }
 
   // Dimensions
@@ -294,7 +324,12 @@ class CupertinoSettingsSkin extends DefaultSkin {
   }
 
   @override
-  Widget? accessoryWidget(BuildContext context, {AccessoryType accessoryType = AccessoryType.none, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+  Widget? accessoryWidget(
+    BuildContext context, {
+    AccessoryType accessoryType = AccessoryType.none,
+    Set<WidgetState>? widgetStates,
+    Map<String, dynamic>? extraInfo,
+  }) {
     Widget? accessoryWidget;
 
     switch (accessoryType) {
@@ -332,7 +367,10 @@ class CupertinoSettingsSkin extends DefaultSkin {
   @override
   Widget wrappedLeadingWidget(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo, Widget? child}) {
     child ??= SizedBox.shrink();
-    return Center(key: key, child: Container(color: Colors.transparent, alignment: Alignment.center, child: child));
+    return Center(
+      key: key,
+      child: Container(color: Colors.transparent, alignment: Alignment.center, child: child),
+    );
   }
 
   // Widget Generators
@@ -414,7 +452,14 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// - [cellCount] the total number of cells in its section
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget settingsCellTop(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo}) {
+  Widget settingsCellTop(
+    BuildContext context, {
+    Key? key,
+    Set<WidgetState>? widgetStates,
+    required int cellIndex,
+    required int cellCount,
+    Map<String, dynamic>? extraInfo,
+  }) {
     return cellIndex == 0 ? keyline(context, key: key, extraInfo: extraInfo) : SizedBox.shrink();
   }
 
@@ -426,7 +471,14 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// - [cellCount] the total number of cells in its section
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget settingsCellBottom(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo}) {
+  Widget settingsCellBottom(
+    BuildContext context, {
+    Key? key,
+    Set<WidgetState>? widgetStates,
+    required int cellIndex,
+    required int cellCount,
+    Map<String, dynamic>? extraInfo,
+  }) {
     return keyline(context, key: key, indent: cellIndex < (cellCount - 1) ? 20 : 0, extraInfo: extraInfo);
   }
 
@@ -457,7 +509,17 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget detailsContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', String value = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.none, Map<String, dynamic>? extraInfo}) {
+  Widget detailsContent(
+    BuildContext context, {
+    Key? key,
+    Set<WidgetState>? widgetStates,
+    String title = '',
+    String subtitle = '',
+    String value = '',
+    Widget? leadingWidget,
+    AccessoryType accessoryType = AccessoryType.none,
+    Map<String, dynamic>? extraInfo,
+  }) {
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
     return Container(
@@ -482,8 +544,18 @@ class CupertinoSettingsSkin extends DefaultSkin {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty) Text(title, style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
-                  if (subtitle.isNotEmpty) Text(subtitle, style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (title.isNotEmpty)
+                    Text(
+                      title,
+                      style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  if (subtitle.isNotEmpty)
+                    Text(
+                      subtitle,
+                      style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                 ],
               ),
             ),
@@ -495,7 +567,11 @@ class CupertinoSettingsSkin extends DefaultSkin {
               fit: FlexFit.loose,
               child: Align(
                 alignment: AlignmentDirectional.centerEnd,
-                child: Text(value, style: valueTextStyle(context, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                child: Text(
+                  value,
+                  style: valueTextStyle(context, extraInfo: extraInfo),
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
           if (accessoryWidget != null) horizontalPadding(context, extraInfo: extraInfo),
@@ -518,7 +594,18 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// - [onChanged] callback method called when the value of the swich changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget switchContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', bool value = false, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.none, required Function(bool) onChanged, Map<String, dynamic>? extraInfo}) {
+  Widget switchContent(
+    BuildContext context, {
+    Key? key,
+    Set<WidgetState>? widgetStates,
+    String title = '',
+    String subtitle = '',
+    bool value = false,
+    Widget? leadingWidget,
+    AccessoryType accessoryType = AccessoryType.none,
+    required Function(bool) onChanged,
+    Map<String, dynamic>? extraInfo,
+  }) {
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
     return Container(
@@ -541,8 +628,18 @@ class CupertinoSettingsSkin extends DefaultSkin {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty) Text(title, style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
-                  if (subtitle.isNotEmpty) Text(subtitle, style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (title.isNotEmpty)
+                    Text(
+                      title,
+                      style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  if (subtitle.isNotEmpty)
+                    Text(
+                      subtitle,
+                      style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                 ],
               ),
             ),
@@ -581,7 +678,18 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// - [onChanged] callback method called when the value of the slider changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget sliderContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', double value = 0.0, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.none, required Function(double) onChanged, Map<String, dynamic>? extraInfo}) {
+  Widget sliderContent(
+    BuildContext context, {
+    Key? key,
+    Set<WidgetState>? widgetStates,
+    String title = '',
+    String subtitle = '',
+    double value = 0.0,
+    Widget? leadingWidget,
+    AccessoryType accessoryType = AccessoryType.none,
+    required Function(double) onChanged,
+    Map<String, dynamic>? extraInfo,
+  }) {
     widgetStates ??= <WidgetState>{};
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
@@ -605,8 +713,18 @@ class CupertinoSettingsSkin extends DefaultSkin {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty) Text(title, style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
-                  if (subtitle.isNotEmpty) Text(subtitle, style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (title.isNotEmpty)
+                    Text(
+                      title,
+                      style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  if (subtitle.isNotEmpty)
+                    Text(
+                      subtitle,
+                      style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                 ],
               ),
             ),
@@ -643,7 +761,17 @@ class CupertinoSettingsSkin extends DefaultSkin {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget buttonContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, ButtonType type = ButtonType.normal, String title = '', String subtitle = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.none, Map<String, dynamic>? extraInfo}) {
+  Widget buttonContent(
+    BuildContext context, {
+    Key? key,
+    Set<WidgetState>? widgetStates,
+    ButtonType type = ButtonType.normal,
+    String title = '',
+    String subtitle = '',
+    Widget? leadingWidget,
+    AccessoryType accessoryType = AccessoryType.none,
+    Map<String, dynamic>? extraInfo,
+  }) {
     widgetStates ??= <WidgetState>{};
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 

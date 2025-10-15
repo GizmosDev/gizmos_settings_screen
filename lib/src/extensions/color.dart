@@ -30,7 +30,8 @@ extension HexColor on Color {
   /// Returns the textual representative of the Color as a hex string
   /// [leadingHashSign] - whether or not to prefix a hash symbol (#) (defaults to `true`)
   /// [includeAlpha] - whether or not to include the opacity of the colour (defaults to `true`)
-  String toHex({bool leadingHashSign = true, bool includeAlpha = true}) => '${leadingHashSign ? '#' : ''}'
+  String toHex({bool leadingHashSign = true, bool includeAlpha = true}) =>
+      '${leadingHashSign ? '#' : ''}'
       '${includeAlpha ? (255 * a).round().toRadixString(16).padLeft(2, '0') : ''}'
       '${(255 * r).round().toRadixString(16).padLeft(2, '0')}'
       '${(255 * g).round().toRadixString(16).padLeft(2, '0')}'

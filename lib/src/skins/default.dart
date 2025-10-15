@@ -224,7 +224,12 @@ class DefaultSkin extends SettingsSkinDelegate {
     return showKeylines(context) ? HexColor.fromHex('#e2e2e5') : Colors.transparent;
   }
 
-  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.none, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+  Color accessoryColor(
+    BuildContext context, {
+    AccessoryType accessoryType = AccessoryType.none,
+    Set<WidgetState>? widgetStates,
+    Map<String, dynamic>? extraInfo,
+  }) {
     widgetStates ??= <WidgetState>{};
 
     switch (accessoryType) {
@@ -318,30 +323,55 @@ class DefaultSkin extends SettingsSkinDelegate {
   // - header
   @override
   TextStyle headerTextStyle(BuildContext context, {Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: headerTextColor(context, extraInfo: extraInfo), fontFamily: 'sans-serif', fontSize: 24, fontWeight: FontWeight.w400);
+    return TextStyle(
+      color: headerTextColor(context, extraInfo: extraInfo),
+      fontFamily: 'sans-serif',
+      fontSize: 24,
+      fontWeight: FontWeight.w400,
+    );
   }
 
   // - footer
   @override
   TextStyle footerTextStyle(BuildContext context, {Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: footerTextColor(context, extraInfo: extraInfo), fontFamily: 'sans-serif', fontSize: 13, fontWeight: FontWeight.w400);
+    return TextStyle(
+      color: footerTextColor(context, extraInfo: extraInfo),
+      fontFamily: 'sans-serif',
+      fontSize: 13,
+      fontWeight: FontWeight.w400,
+    );
   }
 
   // - title
   @override
   TextStyle titleTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: titleTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo), fontFamily: 'sans-serif', fontSize: 18, fontWeight: FontWeight.w400);
+    return TextStyle(
+      color: titleTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+      fontFamily: 'sans-serif',
+      fontSize: 18,
+      fontWeight: FontWeight.w400,
+    );
   }
 
   @override
   TextStyle subtitleTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: subtitleTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo), fontFamily: 'sans-serif', fontSize: 16, fontWeight: FontWeight.w400);
+    return TextStyle(
+      color: subtitleTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+      fontFamily: 'sans-serif',
+      fontSize: 16,
+      fontWeight: FontWeight.w400,
+    );
   }
 
   // - value
   @override
   TextStyle valueTextStyle(BuildContext context, {Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
-    return TextStyle(color: valueTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo), fontFamily: 'sans-serif', fontSize: 16, fontWeight: FontWeight.w300);
+    return TextStyle(
+      color: valueTextColor(context, widgetStates: widgetStates, extraInfo: extraInfo),
+      fontFamily: 'sans-serif',
+      fontSize: 16,
+      fontWeight: FontWeight.w300,
+    );
   }
 
   // Dimensions
@@ -409,15 +439,15 @@ class DefaultSkin extends SettingsSkinDelegate {
       child: SizedBox.shrink(),
     );
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
-      mainAxisSize: MainAxisSize.max,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [keyline],
-    );
+    return Row(mainAxisAlignment: MainAxisAlignment.end, mainAxisSize: MainAxisSize.max, crossAxisAlignment: CrossAxisAlignment.center, children: [keyline]);
   }
 
-  Widget? accessoryWidget(BuildContext context, {AccessoryType accessoryType = AccessoryType.none, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+  Widget? accessoryWidget(
+    BuildContext context, {
+    AccessoryType accessoryType = AccessoryType.none,
+    Set<WidgetState>? widgetStates,
+    Map<String, dynamic>? extraInfo,
+  }) {
     Widget? accessoryWidget;
 
     switch (accessoryType) {
@@ -454,7 +484,10 @@ class DefaultSkin extends SettingsSkinDelegate {
 
   Widget wrappedLeadingWidget(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo, Widget? child}) {
     child ??= SizedBox(width: leadingIndent(context), height: leadingIndent(context));
-    return Center(key: key, child: Container(color: Colors.transparent, width: leadingIndent(context), height: leadingIndent(context), alignment: Alignment.center, child: child));
+    return Center(
+      key: key,
+      child: Container(color: Colors.transparent, width: leadingIndent(context), height: leadingIndent(context), alignment: Alignment.center, child: child),
+    );
   }
 
   // Widget Generators
@@ -537,7 +570,14 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// - [cellCount] the total number of cells in its section
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget settingsCellTop(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo}) {
+  Widget settingsCellTop(
+    BuildContext context, {
+    Key? key,
+    Set<WidgetState>? widgetStates,
+    required int cellIndex,
+    required int cellCount,
+    Map<String, dynamic>? extraInfo,
+  }) {
     return SizedBox.shrink(key: key);
   }
 
@@ -549,7 +589,14 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// - [cellCount] the total number of cells in its section
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget settingsCellBottom(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, required int cellIndex, required int cellCount, Map<String, dynamic>? extraInfo}) {
+  Widget settingsCellBottom(
+    BuildContext context, {
+    Key? key,
+    Set<WidgetState>? widgetStates,
+    required int cellIndex,
+    required int cellCount,
+    Map<String, dynamic>? extraInfo,
+  }) {
     return (cellIndex < (cellCount - 1)) ? SizedBox.shrink(key: key) : keyline(context, key: key, extraInfo: extraInfo);
   }
 
@@ -581,7 +628,17 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget detailsContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', String value = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.none, Map<String, dynamic>? extraInfo}) {
+  Widget detailsContent(
+    BuildContext context, {
+    Key? key,
+    Set<WidgetState>? widgetStates,
+    String title = '',
+    String subtitle = '',
+    String value = '',
+    Widget? leadingWidget,
+    AccessoryType accessoryType = AccessoryType.none,
+    Map<String, dynamic>? extraInfo,
+  }) {
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
     return Container(
@@ -606,8 +663,18 @@ class DefaultSkin extends SettingsSkinDelegate {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty) Text(title, style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
-                  if (subtitle.isNotEmpty) Text(subtitle, style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (title.isNotEmpty)
+                    Text(
+                      title,
+                      style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  if (subtitle.isNotEmpty)
+                    Text(
+                      subtitle,
+                      style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                 ],
               ),
             ),
@@ -619,7 +686,11 @@ class DefaultSkin extends SettingsSkinDelegate {
               fit: FlexFit.loose,
               child: Align(
                 alignment: AlignmentDirectional.centerEnd,
-                child: Text(value, style: valueTextStyle(context, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                child: Text(
+                  value,
+                  style: valueTextStyle(context, extraInfo: extraInfo),
+                  overflow: TextOverflow.ellipsis,
+                ),
               ),
             ),
           if (accessoryWidget != null) horizontalPadding(context, extraInfo: extraInfo),
@@ -642,7 +713,18 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// - [onChanged] callback method called when the value of the swich changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget switchContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', bool value = false, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.none, required Function(bool) onChanged, Map<String, dynamic>? extraInfo}) {
+  Widget switchContent(
+    BuildContext context, {
+    Key? key,
+    Set<WidgetState>? widgetStates,
+    String title = '',
+    String subtitle = '',
+    bool value = false,
+    Widget? leadingWidget,
+    AccessoryType accessoryType = AccessoryType.none,
+    required Function(bool) onChanged,
+    Map<String, dynamic>? extraInfo,
+  }) {
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
     return Container(
@@ -665,9 +747,19 @@ class DefaultSkin extends SettingsSkinDelegate {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  if (title.isNotEmpty) Text(title, style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (title.isNotEmpty)
+                    Text(
+                      title,
+                      style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   if (title.isNotEmpty && subtitle.isNotEmpty) verticalPadding(context, extraInfo: extraInfo),
-                  if (subtitle.isNotEmpty) Text(subtitle, style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (subtitle.isNotEmpty)
+                    Text(
+                      subtitle,
+                      style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                 ],
               ),
             ),
@@ -708,7 +800,18 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// - [onChanged] callback method called when the value of the slider changes
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget sliderContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, String title = '', String subtitle = '', double value = 0.0, Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.none, required Function(double) onChanged, Map<String, dynamic>? extraInfo}) {
+  Widget sliderContent(
+    BuildContext context, {
+    Key? key,
+    Set<WidgetState>? widgetStates,
+    String title = '',
+    String subtitle = '',
+    double value = 0.0,
+    Widget? leadingWidget,
+    AccessoryType accessoryType = AccessoryType.none,
+    required Function(double) onChanged,
+    Map<String, dynamic>? extraInfo,
+  }) {
     widgetStates ??= <WidgetState>{};
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 
@@ -732,9 +835,18 @@ class DefaultSkin extends SettingsSkinDelegate {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(title, style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  Text(
+                    title,
+                    style: titleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                    overflow: TextOverflow.ellipsis,
+                  ),
                   if (subtitle.isNotEmpty) verticalPadding(context, extraInfo: extraInfo),
-                  if (subtitle.isNotEmpty) Text(subtitle, style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo), overflow: TextOverflow.ellipsis),
+                  if (subtitle.isNotEmpty)
+                    Text(
+                      subtitle,
+                      style: subtitleTextStyle(context, widgetStates: widgetStates, extraInfo: extraInfo),
+                      overflow: TextOverflow.ellipsis,
+                    ),
                   verticalPadding(context, extraInfo: extraInfo),
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
@@ -766,10 +878,7 @@ class DefaultSkin extends SettingsSkinDelegate {
                       minThumbSeparation: sliderMinThumbSeparation(context, widgetStates: widgetStates, extraInfo: extraInfo),
                       thumbSelector: sliderThumbSelector(context, widgetStates: widgetStates, extraInfo: extraInfo),
                     ),
-                    child: Slider(
-                      value: value,
-                      onChanged: widgetStates.isDisabled ? null : onChanged,
-                    ),
+                    child: Slider(value: value, onChanged: widgetStates.isDisabled ? null : onChanged),
                   ),
                 ],
               ),
@@ -795,7 +904,17 @@ class DefaultSkin extends SettingsSkinDelegate {
   /// - [accessoryType] can indicate if a disclosure arrow, checkmark, or other symbol should be on the trailing side of cell
   /// - [extraInfo] a map where you can pass additional info through to your subclasses to be used however you need
   @override
-  Widget buttonContent(BuildContext context, {Key? key, Set<WidgetState>? widgetStates, ButtonType type = ButtonType.normal, String title = '', String subtitle = '', Widget? leadingWidget, AccessoryType accessoryType = AccessoryType.none, Map<String, dynamic>? extraInfo}) {
+  Widget buttonContent(
+    BuildContext context, {
+    Key? key,
+    Set<WidgetState>? widgetStates,
+    ButtonType type = ButtonType.normal,
+    String title = '',
+    String subtitle = '',
+    Widget? leadingWidget,
+    AccessoryType accessoryType = AccessoryType.none,
+    Map<String, dynamic>? extraInfo,
+  }) {
     widgetStates ??= <WidgetState>{};
     var accessoryWidget = this.accessoryWidget(context, accessoryType: accessoryType, widgetStates: widgetStates, extraInfo: extraInfo);
 

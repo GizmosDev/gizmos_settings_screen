@@ -15,7 +15,7 @@ version: 0.4.0
 publish_to: "none"
 
 environment:
-  sdk: ">=3.6.0 <4.0.0"
+  sdk: ">=3.8.0 <4.0.0"
   flutter: ">=3.27.0"
 
 dependencies:
@@ -23,7 +23,7 @@ dependencies:
     sdk: flutter
 
   # Using `shared_preferences` for this example.
-  shared_preferences: ^2.0.5
+  shared_preferences: ^2.5.3
 
   # Load our local `gizmos_settings_screen` package.
   gizmos_settings_screen:

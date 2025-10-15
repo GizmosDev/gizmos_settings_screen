@@ -162,7 +162,12 @@ class CupertinoDarkSettingsSkin extends CupertinoSettingsSkin {
   }
 
   @override
-  Color accessoryColor(BuildContext context, {AccessoryType accessoryType = AccessoryType.none, Set<WidgetState>? widgetStates, Map<String, dynamic>? extraInfo}) {
+  Color accessoryColor(
+    BuildContext context, {
+    AccessoryType accessoryType = AccessoryType.none,
+    Set<WidgetState>? widgetStates,
+    Map<String, dynamic>? extraInfo,
+  }) {
     widgetStates ??= <WidgetState>{};
 
     switch (accessoryType) {
